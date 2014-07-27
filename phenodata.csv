@@ -1,0 +1,9 @@
+sample.id, num.tech.reps, protocol, strain, time
+SRX020102, 1, control, Sprague Dawley, 2 months
+SRX020103, 2, control, Sprague Dawley, 2 months
+SRX020104, 1, L5 SNL, Sprague Dawley, 2 months
+SRX020105, 2, L5 SNL, Sprague Dawley, 2 months
+SRX020091-3, 1, control, Sprague Dawley, 2 weeks
+SRX020088-90, 2, control, Sprague Dawley, 2 weeks
+SRX020094-7, 1, L5 SNL, Sprague Dawley, 2 weeks
+SRX020098-101, 2, L5 SNL, Sprague Dawley, 2 weeks

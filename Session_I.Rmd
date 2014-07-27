@@ -1,0 +1,553 @@
+---
+title: "Moving From Excel to R"
+subtitle: "Session I"
+author: "micah gearhart"
+date: "7/14/2014"
+output: ioslides_presentation
+---
+
+## Installing Packages
+For this tutorial we are going to need to install 3 packages.  This can be done in the "Tools"->"Install Packages..." menu on the RStudio toolbar or you can Cntrl-Enter execute the following commands.
+
+```{r Setup, eval=FALSE}
+install.packages("downloader", repos = "http://cran.us.r-project.org")
+install.packages("reshape2", repos = "http://cran.us.r-project.org")
+install.packages("ggplot2", repos = "http://cran.us.r-project.org")
+```
+
+## Download Today's Rmd File
+Download this file from your Email, directly from the Web, or with R:
+https://raw.githubusercontent.com/micahgearhart/gcd-workshop/master/Session_I.Rmd
+
+```{r Download Rmd,eval=F}
+library(downloader)
+download("https://raw.githubusercontent.com/micahgearhart/gcd-workshop/master/Session_I.Rmd",
+         destfile="Session_I.Rmd")
+```
+
+## Course Description
+The Monday morning session is designed for people that are used to working with spreadsheets in Microsoft Excel.  We will cover the advantages of the R programming language and explore the RStudio desktop interface.   We will learn about the various data types in R, how to import data from other sources and how to do statistical tests that are not possible in Excel.  We will write a function in R, apply it to a large dataset and graph the data using a popular extension package called ggplot2.
+
+## Today's Topics
+> - Introduction to RStudio
+> - Data Types and Structures
+> - Bradford Assay Example
+> - Working with Factors
+> - Pupae Formation
+> - 2014 World Cup
+
+## Why R?
+> - Data has gotten too big for excel
+> - R is the "lingua franca" of statistics
+> - Bioconductor maintains an extensive set of free, useful tools for biology
+
+## Why RStudio?
+> - Point and Click interfaces are not reproducible
+> - "Scripting" your analysis enables reproducibility and the ability to share knowledge with others
+> - Rmd files can be converted html, word documents, pdf or html/pdf slides 
+> - Commands in the Editor Window can be run in the Console Window with the mouse or keyboard (Demo) 
+
+## Teaching Assistants
+ - Rebecca LaRue
+ - Lauren Mills 
+ - Robin Lindeman 
+ - Mark Murphy 
+ - Maggie O'Meara 
+ - Masahiko Takemura 
+ - Ying Zhang 
+
+## Assigning Data to Variables
+R, like other programming languages, has a different method for storing different types of data.  Numbers are stored differently than words.  But we can assign either a number or a word to a variable with the "<-" symbol.  
+```{r Data Types 1}
+x<-7.5
+x
+y<-"Go Gophers!"
+y
+```
+
+## Functions
+We can manipulate data with functions.  Functions are always followed by a set of parentheses.  The variables inside the parentheses get passed to the function.  
+```{r Data Types 2}
+sqrt(x)
+log(x)
+toupper(y)
+```
+
+## Operators
+Operators are like functions but they go between variables.
+```{r Data Types 3}
+#operators
+x*2
+x^2
+```
+
+Some functions take more than one argument, which are separated by commas.
+```{r Data Types 4}
+rep(x,4)
+strsplit(y,"p")
+```
+
+Functions can also be strung together that is executed from the inside function to the outside function.  If these "one liners" get too long, they are often difficult to understand what they do.
+```{r Data Types 5}
+abs(log10(x))
+
+rep(sqrt(10*abs(log10(x))),3)
+```
+
+
+## Variables have class
+R assigns a "class" to each variable depending on its contents.  To figure out what the class of each object is you can run the function class().
+```{r Data Types 6}
+class(x)
+class(y)
+```
+
+## Vectors
+We can also use a variable to store more than one item.  This is called a vector.  Everything is a vector in R.  Even the x and y examples above are vectors of length = 1.  
+
+## Numerical Vectors
+Here are two different strategies for storing multiple objects in a vector variable.   The ":" operator is shorthand for a list of integers between what is on the left and what is on the right.  The function c() is a way to combine multiple objects into one vector.   The ":" operator can be used for numbers as well as character objects.
+```{r Data Types 7}
+x<-1:14
+x
+class(x)
+```
+
+## Character Vectors
+```{r Data Types 8}
+y<-c("Badgers","Gophers","Hawkeyes","Spartans")
+y
+class(y)
+```
+
+## Coercion
+Every vector in R can only have one type of data.  Therefore R has a feature called "coercion" that change the data type to make it fit in the spot you are trying to put it.   If the data type is unspecified, it will "coerce" the data into another type.
+```{r Data Types 9}
+z<-c(14,"Badgers",sqrt(56.25),"Gophers")
+z
+class(z)
+```
+The integer and the number now have quotes around them because they are now characters.  Also note that the function sqrt() was evaluated and the result was placed in the variable z.
+
+## Functions Applied to Vector Variables
+Variables can be manipulated in a way that is analogous to manipulating columns in an Excel Spreadsheet.
+```{r Data Types 10}
+x<-1:10
+y<-101:110
+x+y
+```
+
+## Paste
+We can also combine strings with the function paste().
+```{r Data Types 11}
+x<-c("Badgers","Gophers","Hawkeyes","Spartans")
+y<-c("are red", "are gold", "are yellow", "are green")
+paste(x,y)
+```
+
+## Recycling for unequal length vectors
+Unlike Excel, R will recycle variables if one vector is longer than the other. 
+```{r Data Types 12}
+x<-1:10
+y<-c(0,100)
+x+y
+```
+
+
+## Recycling for unequal length Vectors
+The variable y gets used over and over again until R gets to the end of x.  The same system is used to add a single number to a vector.
+```{r Data Types 13}
+x<-1:10
+x+4
+```
+
+##  EXERCISE 1
+Use the sum() function to add up all numbers between 1 and 100.  
+
+Hint:  Type ?sum
+
+Now multiply 100 by 101 and divide by 2.  Is this relationship only true for 100 or does it work for other numbers?
+
+## Brackets
+As our variables get bigger we are going to want to subset the data so we don't have to look at it all at once.  We can do this using the bracket "[ ]" notation.
+```{r Data Types 14}
+x<- 100:200
+x[1]
+x[1:10]
+x[43:50]
+```
+
+## Indexing Multidimensional Data
+The bracket notation can also be used with multidimensional data by adding a comma for each additional dimension.  For two dimensional data, the number before the comma is the ROW, the number after the comma is the column.  When no value is given before/after the comma, the entire row/column is returned.  We'll use the function matrix() to create an example 2 dimensional dataset with numbers between 1 and 100.
+
+```{r Data Types 15}
+x<- matrix(1:100,nrow=10,byrow=TRUE)
+x
+x[3,3]
+```
+
+```{r Data Types 16}
+# third row
+x[3,]
+
+#third column
+x[,3]
+```
+
+```{r Data Types 17}
+#odd rows
+x[c(1,3,5,7,9),]
+```
+
+## Logical Indices
+Instead of specifying the positions, we can also subset the data with a logical variable (i.e. TRUE or FALSE).  If the logical variable is TRUE for a position then it is included.  If it is false, the position is not included in the output.  The length of the logical variable must be the same length as the data in the dimension you are trying to index.
+```{r Data Types 18}
+x<-1:5
+y<-c(TRUE,FALSE,FALSE,TRUE,FALSE)
+x[y]
+```
+
+## Boolean Operators:  >, <, ==, >=, <=
+We can also create logical variables with Boolean operators rather than typing them in. 
+```{r Data Types 19}
+x<-1:5
+y<- x > 3
+y
+x[y]
+
+#or we can drop the y intermediate variable and do it on the fly ...
+x[x>3]
+```
+
+## EXERCISE 2
+What does the function seq() do?  Hint: type ?seq
+Use seq() to create a list of numbers from 0 to 100 by 5's.
+Can you use seq() to pull out the 1st, 5th,and 9th word out of this character vector?
+```{r EXERCISE 2}
+chant <- c("Ski","random","words","stuffed",
+           "U","in","between","other","Mah","words")
+```
+
+## Data.Frames
+Now we have all the tools we need to start working with data.frame objects.  Like the spreadsheets in Microsoft Excel sometimes we want to be able to mix different data classes into one data objects.  We might want to have an integer, a number and a character vector all in the same table.  This type of object is called the data.frame and it is essentially the R equivalent of a sheet.   We can build one easily using the data.frame() function.
+
+```{r Data Types 20}
+# highlight all 4 lines and Cntrl-Enter or hit Cntrl-Enter 4 times
+u<-data.frame( mascot= c("Badgers","Gophers","Hawkeyes","Buckeyes","Spartans"),
+               school_size = c(42595,51853,31065,63964,49300),
+               endowment =c(2020000000,2494000000,1062000000,3100000000,2000000000)
+               )
+u
+class(u)
+```
+
+## $ Operator
+One of convenient features of a data frame is the ability to easily extract columns and add columns using the "$" operator.
+```{r Data Types 21}
+#show a column
+u$school_size
+#add a column
+u$color <-c("red","gold","yellow","red","green")
+u
+```
+
+```{r Data Types 22}
+#add a column using data from other columns
+u$endowment_per_pupil<-u$endowment/u$school_size
+u
+```
+
+## Plotting 
+Data can also be pulled directly from data frames to make plots.
+```{r Data Types 23}
+plot(u$school_size,u$endowment)
+```
+
+## Indexing Data Frames
+Data frames can also be indexed and subsetted like the matrix example above.
+```{r Data Types 24}
+#make a logical vector to find the schools above the median endowment_per_pupil
+u$endowment_per_pupil>median(u$endowment_per_pupil)
+
+#return the mascots and colors for those schools
+u[u$endowment_per_pupil>median(u$endowment_per_pupil),c("mascot","color")]
+```
+
+## Match
+A common query in bioinformatic analyses is to compare lists of genes in different data sets.  For example you might want to know if a list of genes from experiment A is present in a list of upregulated genes from experiment B.  The function match() is very useful for finding the positions of objects in vectors.
+```{r Data Types 25}
+match("green",c("red","blue","purple","green","orange"))
+
+x<-100:200
+match(143:145,x)
+```
+
+## EXERCISE 3
+The operator %in% is a shortcut to match() that returns a logical value (TRUE OR FALSE) depending on whether the value on the left side of the operator is in the table on the right side of the operator.   For each color in the rainbow, determine whether that color is associated with a university in our u dataframe.  Hint - you need quotes around %in% to find it in help (i.e. Type ?`%in%`).
+
+```{r Exercise 3}
+rainbow<-c("red","orange","yellow","green","blue","indigo","violet")
+```
+
+Now ask the opposite, are the colors of the university in the rainbow vector?
+
+## Bradford Assay
+In the next section we are going to use import data from a Bradford assay in order to make a standard curve and estimate the protein concentration in a set of unknowns.
+
+Most of the data we want to analyze come from other sources than inside R.  Therefore we need to import the data from a file and import it into a variable.  
+
+```{r Bradford 1}
+library(downloader)
+#Download the file
+download("https://raw.githubusercontent.com/micahgearhart/gcd-workshop/master/bradford.csv",
+         destfile="bradford.csv")
+```
+
+```{r Bradford 2}
+#Read the downloaded file
+b<-read.csv("bradford.csv",stringsAsFactors=F)
+b
+str(b)
+```
+We'll talk about the "stringsAsFactors=F" argument in the next section so just ignore that for now.  
+
+## Grep
+Since we first want to work with the standards data to create our standard curve we will use the function grep() to pull out the data we want.   This function searches for a character pattern in a vector of data and returns the indices of entries that match that pattern.
+```{r Bradford 3}
+grep("standard",b$sample)
+
+#this can be used as an index to pull out the values we want
+abs595<-b[grep("standard",b$sample),"abs595"]
+abs595
+```
+
+```{r Bradford 4}
+conc<-b[grep("standard",b$sample),"conc"]
+conc
+```
+
+## Importing Data can be tricky 
+You may have noticed something different about the variable conc.  The numbers were surrounded in quotes.  Something is not quite right.
+```{r Bradford 5}
+class(conc)
+class(abs595)
+```
+
+## Reclassifying data with as()
+The conc variable has a class character because when the data frame was imported into the variable b, the unknown samples contained the character "-" instead of a numeric value.  R automatically made everything in that column a character.  But fortunately this can be easily fixed using the function as() to coerce it back into a number.
+```{r Bradford 6}
+conc<-as(conc,"numeric")
+conc
+class(conc)
+```
+
+## Plot Standards
+Hopefully our Bradford assay was in the linear range.  Lets take a look to see.
+```{r Bradford 7}
+plot(conc,abs595)
+```
+
+## Fitting a Linear Model
+Slightly non-linear.  Let's fit the data to a line and see how good of fit we can get.  We will use the function lm() which is short for linear model.   The terms on the left side of the "~" operator are variables we want to predict, the right side is for the variables that are predictors.
+```{r Bradford 8}
+fit<-lm(abs595 ~ conc)
+summary(fit)$r.squared
+```
+
+```{r Bradford 9}
+plot(conc,abs595)
+abline(fit,col="red")
+```
+
+```{r Bradford 10}
+#this will plot the residuals
+plot(residuals(fit),ylim=c(-0.2,0.2))
+
+#draw a horizontal line at 0 to help visualize the residuals
+abline(h=0,col="red")
+```
+
+## Writing a Function with function()
+Now that we have a slope and an intercept we can write a function() to calculate the concentrations of the unknown samples.   
+```{r Bradford 11}
+calculateProteinConc <-function(x) {
+  slope=fit$coefficients[[2]]
+  intercept=fit$coefficients[[1]]
+  protein<-(x-intercept)/slope
+  return(protein)
+}
+
+#test our function on the standards
+calculateProteinConc(abs595)
+```
+
+## Writing a Function with function()
+```{r Bradford 12}
+#calculate protein concentration for every abs595 in the b dataframe
+b$estimated_protein<-calculateProteinConc(b$abs595)
+b
+```
+
+## Exporting data outside of R
+If we need this data outside of R we can write out the new dataframe.
+```{r Bradford 13}
+write.csv(b,file="bradford_out.csv",row.names=F,quote=F)
+```
+
+## EXERCISE 4
+Write a function() that returns the square of the number passed to it. 
+Use your function to plot the squares of -5:5.
+
+Extra challenge:  Fit the data from your function to a line using lm().
+
+##Analysis of Pupae Formation 
+
+Load the libraries for reshape2 and ggplot2.
+```{r Pupae Formation 1}
+library(reshape2)
+library(ggplot2)
+```
+
+##Analysis of Pupae Formation 
+When we imported the Bradford assay data above we used an argument to the read.csv function that told the R that the character data should not be converted to Factors.  Next we are going to import some data and let R convert all the character columns to factors.  We will use the factors to carry out the analysis.
+```{r Pupae Formation 2}
+download("https://raw.githubusercontent.com/micahgearhart/gcd-workshop/master/dwa.csv",destfile="dwa.csv")
+dwa<-read.csv("dwa.csv")
+
+#head() is a function that shows the first six lines of a data object
+head(dwa)
+
+#str() is a function that shows the structure of each column in the dataset
+str(dwa)
+class(dwa$diet)
+class(dwa$genotype)
+```
+
+## Factors
+The diet and genotype columns are of the class factors.  R uses factors to keep track of which group a data point is in.  To find out how many groups there are we use the levels() function. 
+```{r Pupae Formation 3}
+levels(dwa$diet)
+levels(dwa$genotype)
+```
+
+## Relevel the Factors
+Levels are automatically put in alphabetical order.  If we we want different order we can reassign the factor setting the levels explicitly.
+```{r Pupae Formation 4}
+dwa$genotype <- factor(dwa$genotype, levels = c("w1118","daw11/+","daw1/+","daw1/11"))
+levels(dwa$genotype)
+```
+
+## tapply
+Since R knows which group each data point is in, we can look at the data for each group.  We will use a function called tapply().  There are three arguments to the function tapply:  the data frame, the factor we want to group things by and the function we want to apply to each group.
+```{r Pupae Formation 5}
+tapply(dwa$Pupation_Rate,dwa$diet,mean)
+tapply(dwa$Pupation_Rate,dwa$genotype,mean)
+```
+
+## ggplot - Boxplots
+To get a more visual representation of the data we can use a non-standard plotting package called ggplot2.  While the regular plotting functions in R are quick and simple, ggplot2 excels at graphing data that contains factors and can also make publication-ready graphics.  
+
+The first argument to the ggplot() function is the name of the dataframe that contains the data you want to plot.  The second argument is a list of aesthetics describing which factors should be on the x and y axes. Geometric objects, called "geoms", are added to the plot with a + sign.
+
+```{r Pupae Formation 6}
+ggplot(dwa,aes(x=diet,y=Pupation_Rate)) + geom_boxplot()
+```
+
+```{r Pupae Formation 7}
+ggplot(dwa,aes(x=genotype,y=Pupation_Rate)) + geom_boxplot() 
+```
+
+```{r Pupae Formation 8}
+
+#We can also add themes to the plot
+ggplot(dwa,aes(x=genotype,y=Pupation_Rate)) + geom_boxplot() + theme_bw()
+```
+
+## tapply with two Factors
+Both factors appear to play a role in Pupation Rate.  Fortunately tapply can look at more than one factor at once.  Let's make a table of means for 4 diets against 4 genotypes (a 4x4 table).
+```{r Pupae Formation 9}
+tapply(dwa$Pupation_Rate,list(dwa$diet,dwa$genotype),mean)
+```
+
+## Convert Wide Data to Long Data
+One of the requirements for ggplot2 is that the data has to be in a long format, essentially one datum per line.  To convert our table of means into the long format we are going to use the melt() function.
+```{r Pupae Formation 10}
+dwa2<-melt(tapply(dwa$Pupation_Rate,list(dwa$diet,dwa$genotype),mean))
+dwa2
+```
+
+## tapply the function sd()
+Now dwa2 is in a dataframe we can add another column for the standard deviation sd().
+```{r Pupae Formation 11}
+dwa2$sd<-as.numeric(tapply(dwa$Pupation_Rate,list(dwa$diet,dwa$genotype),sd))
+
+#rename the columns to the appropriate descriptors
+colnames(dwa2)<-c("diet","genotype","Pupation_Rate","sd")
+dwa2
+```
+
+## ggplot - Barplot w/ Error Bars
+Now that we have a mean and a standard deviation for each combination of factors, we can create an informative ggplot graphic with two objects added to our plot: geom_bar() and geom_errorbar().
+```{r Pupae Formation 12}
+ggplot(dwa2,aes(x=diet,y=Pupation_Rate,fill=genotype)) +
+  geom_bar(position="dodge",stat="identity") +
+  geom_errorbar(aes(ymin=Pupation_Rate-sd, ymax=Pupation_Rate+sd), weight=0.2,position="dodge")
+```
+
+
+## ANOVA
+But R is not just for making graphs, we can also apply an ANOVA analysis and apply a Tukey's Significance test on the ANOVA fit.  This analysis allows us estimate the significance of each factor on the Pupation Rate and quantify the significance with an adjusted p-value.  
+```{r Pupae Formation 14}
+TukeyHSD(aov(Pupation_Rate ~ genotype + diet,dwa))
+```
+
+## EXERCISE 5
+2014 World Cup Roster - May change this section if I can find results data
+```{r 2014 World Cup 1}
+download("https://raw.githubusercontent.com/micahgearhart/gcd-workshop/master/world_cup.csv",destfile="world_cup.csv")
+cup<-read.csv("world_cup.csv")
+```
+
+What is the age of the oldest and youngest players?  Hint: ?max ?min
+Use tapply to determine the median age of the players from each country.
+
+## EXERCISE 6
+Do some more exploring with ggplot2.  Can you add another layer to one of the above plots that contains the title?   Hint:   ?ggtitle
+
+Here are some examples to get you started.
+## EXERCISE 6
+```{r EXERCISE 6}
+ggplot(cup, aes(x=position,y=age),group=position,) +geom_violin(fill="red")
+```
+
+```{r EXERCISE 7}
+ggplot(cup, aes(x=country,y=age),group=country) +geom_boxplot()
+```
+
+## EXERCISE 8
+Bioconductor uses a different system for downloading packages called biocLite.  First source http://bioconductor.org/biocLite.R to define the function biocLite() then use it to install packages from Bioconductor as shown below.
+
+```{r EXERCISE 8}
+source("http://bioconductor.org/biocLite.R")
+biocLite("R.utils") 
+biocLite("GenomicRanges")
+biocLite("rtracklayer")
+biocLite("TxDb.Hsapiens.UCSC.hg19.knownGene")
+biocLite("org.Hs.eg.db")
+```
+
+## IGV
+Also Set up IGV on your computer.  If you have a MAC you should download the application.  PC users who do not use the Chrome browser can use the Java Web start.
+
+Here is the URL: http://www.broadinstitute.org/software/igv/download
+
+The software is free but it requires registration.  
+
+## Acknowledgements / References
+> Thanks to Rebecca, Lauren, Robin, Mark, Maggie, Masahiko and Ying for helping out.
+
+> Pupae Formation Data from: Systemic Activin signaling independently regulates sugar homeostasis, cellular metabolism, and pH balance in Drosophila melanogaster.  Ghosh AC, O'Connor MB.  Proc Natl Acad Sci U S A. 2014 Apr 15;111(15):5729-34.
+
+
+
+

@@ -1,0 +1,584 @@
+---
+title: "Introduction to Bioconductor"
+subtitle: "Session II"
+author: "micah gearhart"
+date: "7/15/2014"
+output: ioslides_presentation
+---
+
+## Course Description
+Data from genomics experiments can be quite large and unwieldy.  The Tuesday morning session will cover more complicated data structures that are optimized for for working with this type of data.    We will use a special Bioconductor data structure called "GenomicRanges" to compare the locations of genetic variants, ChIP peaks and annotation data downloaded from UCSC.  We will also go over options for visualization such as the Broad Institute’s Integrated Genomics Viewer (IGV). 
+
+## Download Today's Rmd File
+Download this file from your Email, directly from the Web, or with R:
+https://raw.githubusercontent.com/micahgearhart/gcd-workshop/master/Session_II.Rmd
+
+```{r Download Rmd,eval=F}
+library(downloader)
+download("https://raw.githubusercontent.com/micahgearhart/gcd-workshop/master/Session_II.Rmd",
+         destfile="Session_II.Rmd")
+```
+
+## Setup
+Bioconductor uses a different system for downloading packages called biocLite.  First source http://bioconductor.org/biocLite.R to define the function biocLite() then use it to install packages from Bioconductor as shown below.
+```{r Setup, eval=F}
+source("http://bioconductor.org/biocLite.R")
+biocLite("R.utils") 
+biocLite("GenomicRanges")
+biocLite("rtracklayer")
+biocLite("TxDb.Hsapiens.UCSC.hg19.knownGene")
+biocLite("org.Hs.eg.db")
+```
+
+## Load libraries
+```{r Libraries 1,echo=F}
+library(downloader)
+library(R.utils)
+library(GenomicRanges)
+library(rtracklayer)
+library(TxDb.Hsapiens.UCSC.hg19.knownGene)
+library(org.Hs.eg.db)
+```
+
+```{r Libraries 2,eval=F}
+library(downloader)
+library(R.utils)
+library(GenomicRanges)
+library(rtracklayer)
+library(TxDb.Hsapiens.UCSC.hg19.knownGene)
+library(org.Hs.eg.db)
+```
+
+## GRanges
+To keep track of genomic data we need an efficient way to specify genomic locations that  will allow us to compare data from different experiments for any number of places in the genome.  Bioconductor created a new class of structure called GRange.  Like the data types for characters and numbers, this data structure is designed to efficiently store locations within the genome.  We can create new objects of this class with the GRanges() function.
+
+## GRanges
+To create a Grange ojbect, we need to pass this function 3 arguments:  
+ - a character vector for a chromosome
+ - an IRanges() object with the start and stop position
+ - a character vector containing '+','-', or '*' for the strand.
+```{r Granges 1}
+gr <- GRanges(seqnames="chr1",IRanges(110,115),strand='+')
+```
+
+## GRanges
+Take a look at what happens when you type gr.  The header for gr tells you there is 1 range in this object and 0 metadata columns and the class for each of the columns (an Rle is a class for storing highly repetitive character strings).   The footer tells you the seqlength of each chromosome.  We haven't specified the organism for gr so it doesn't know how long chr1 should be.
+```{r Granges 2}
+gr
+```
+
+## GRanges
+There are special functions that are a part of the GenomicRanges package for working with GRanges objects.
+```{r Granges 3}
+start(gr)
+end(gr)
+width(gr)
+```
+
+## Functions and Operations on GRanges
+We can also use functions and operations on GRanges and the results of these functions can be stored as new ranges.
+```{r Granges 4}
+shift(gr, -2)  #move 2 upstream
+```
+
+## Functions and Operations on GRanges
+```{r Granges 5}
+gr+5 #widen by 5
+```
+
+## Functions and Operations on GRanges
+```{r Granges 6}
+gr-1 #narrow by 1
+```
+
+## Functions and Operations on GRanges
+```{r Granges 7}
+#Note: wrapping the next line in parentheses makes the assigment and shows me the result at the same time.
+(big_gr <- shift(gr,100)+50)
+```
+
+## Plotting GRanges
+It might be helpful to look at a graphicalrepresentation of GRanges to more clearly illustrate these operations.  Don't worry about how I the plotgr function works.  Just watch what happens to the intervals as I apply functions and operations to gr.  The idea for this graphic is from ph525x[^fn-ph525x].
+```{r Granges 8,eval=F}
+#define a function 
+plotgr <- function(r,i) { arrows(start(r)-.5,i,end(r)+.5,i,code=3,angle=90,lwd=3) }
+#create a blank plot
+plot(0,0,xlim=c(100,120),ylim=c(0,10),type="n",xlab="",ylab="",xaxt="n")
+#label axis
+axis(1,100:120)
+# vertical bars to see intervals
+abline(v=100:130 + .5,col=rgb(0,0,0,.5))
+# color in the original range
+polygon(c(start(gr)-.5,start(gr)-.5,end(gr)+.5,end(gr)+.5),c(-1,12,12,-1),col=rgb(1,0,0,.2),border=NA)
+```
+## Plotting GRanges
+
+Follow what happens to the range with each manipulation.  The second argument to plotgr is just an index that moves up the chart.
+```{r Granges 9,eval=F}
+# plot the original IRange
+plotgr(gr,1)
+
+#shift(gr)
+plotgr(shift(gr,2), 2)
+plotgr(shift(gr,-2), 3)
+
+#widen
+plotgr(gr + 2, 4)
+#narrow
+plotgr(gr - 2, 5)
+```
+
+## Plotting GRanges
+```{r Granges 10,echo=F}
+#define a function 
+plotgr <- function(r,i) { arrows(start(r)-.5,i,end(r)+.5,i,code=3,angle=90,lwd=3) }
+#create a blank plot
+plot(0,0,xlim=c(100,120),ylim=c(0,10),type="n",xlab="",ylab="",xaxt="n")
+#label axis
+axis(1,100:120)
+# vertical bars to see intervals
+abline(v=100:130 + .5,col=rgb(0,0,0,.5))
+# color in the original range
+polygon(c(start(gr)-.5,start(gr)-.5,end(gr)+.5,end(gr)+.5),c(-1,12,12,-1),col=rgb(1,0,0,.2),border=NA)
+# plot the original IRange
+plotgr(gr,1)
+
+#shift(gr)
+plotgr(shift(gr,2), 2)
+plotgr(shift(gr,-2), 3)
+
+#widen
+plotgr(gr + 2, 4)
+#narrow
+plotgr(gr - 2, 5)
+```
+
+## GRanges are Strand Specific 
+Some functions that operate on GRanges take the strand information into account.  Whether something is in front or in back depends on what strand your object is on.
+```{r Granges 11, eval=F}
+plotgr(flank(gr,width=3,start=TRUE),6)
+plotgr(promoters(gr,upstream=4,downstream=2),7)
+
+#switch the strand of gr
+(strand(gr)<-"-")
+plotgr(flank(gr,width=3,start=TRUE),8)
+plotgr(promoters(gr,upstream=4,downstream=2),9)
+```
+
+## GRanges are Strand Specific
+```{r Granges 12, echo=F}
+# first set up a function plotir() and create a blank plot
+plotgr <- function(r,i) { arrows(start(r)-.5,i,end(r)+.5,i,code=3,angle=90,lwd=3) }
+plot(0,0,xlim=c(100,120),ylim=c(0,10),type="n",xlab="",ylab="",xaxt="n")
+axis(1,100:120)
+abline(v=100:130 + .5,col=rgb(0,0,0,.5))
+polygon(c(start(gr)-.5,start(gr)-.5,end(gr)+.5,end(gr)+.5),c(-1,12,12,-1),col=rgb(1,0,0,.2),border=NA)
+
+# plot the original IRange
+plotgr(gr,1)
+
+# draw a red shadow for the original IRange
+plotgr(shift(gr,2), 2)
+plotgr(shift(gr,-2), 3)
+plotgr(gr + 2, 4)
+plotgr(gr - 2, 5)
+plotgr(flank(gr,width=3,start=TRUE),6)
+plotgr(promoters(gr,upstream=4,downstream=2),7)
+
+#switch the strand of gr
+strand(gr)<-"-"
+plotgr(flank(gr,width=3,start=TRUE),8)
+plotgr(promoters(gr,upstream=4,downstream=2),9)
+```
+
+
+## GRanges are Vectors of ranges
+We can provide a list of starts, stops, and strands to create a variable that contains multiple ranges. In this example recycling was used to place each range on chr1 but we could also give GRanges a list of chromosome names.
+```{r Granges 13}
+(gr2 <- GRanges(seqnames="chr1",IRanges(start=c(5,5,105,99),end=c(10,8,120,111)),strand=c("+","-","-","+")))
+width(gr2)
+promoters(gr2,upstream=5,downstream=2)
+```
+
+## Metadata Columns
+We can also store data in a genomics range much like we store data in a data frame.  This data is stored in the metadata columns. It can be extracted as a data frame with the mcols() function.
+```{r Granges 14}
+gr2$color<-c("red","green","blue","gold")
+gr2$score<-c(5.5,10.7,23.3,1.1)
+gr2
+mcols(gr2)
+```
+
+## findOverlaps
+One of the most common tasks is to compare one set of genomic ranges to another set.  For example, we might be interested in where gr and gr2 overlap.  To find those regions we use the findOverlaps() function which returns the indices from both the query and subject range.  
+```{r Granges 15}
+#findOverlaps(query,subject)
+(overlaps<-findOverlaps(gr,gr2))
+```
+## findOverlaps
+```{r Granges 16}
+#This is the range from gr
+queryHits(overlaps)
+gr[queryHits(overlaps)]
+```
+## findOverlaps
+```{r Granges 17}
+#This is the range from gr2
+subjectHits(overlaps)
+gr2[subjectHits(overlaps)]
+```
+
+## %over%
+The operator %over% works similar to the %in% operator that we learned about in Session 1.  It returns a logical variable which can be used to index a GRanges object.
+```{r Granges 18}
+gr2 %over% gr
+gr2[gr2 %over% gr]
+```
+
+## EXERCISE 1
+Use a logical vector to subset gr2 regions that have a "score" in the metadata columns > 10.
+Use grep() to subset the "green" range from gr2.
+
+## EXERCISE 1 ANSWER
+```{r EXERCISE 1 ANSWER 1}
+gr2[gr2$score>10]
+```
+## EXERCISE 1 ANSWER
+```{r EXERCISE 1 ANSWER 2}
+gr2[grep("green",gr2$color)]
+```
+
+##  23andme
+We can use genomic ranges to explore any genome-wide dataset that we might be interested in.  The internet search company Google is funding a project to provide chip based genotyping analysis direct to consumer for $99.   While most consumers of this service consider this information to be private, there are individuals who have uploaded their SNP results to OpenSNP.org.  We are going to download some of this publicly available data to learn about genomic ranges and perhaps understand why the FDA has an issue with their marketing strategy.
+```{r 23andme 1, eval=F}
+download("https://opensnp.org/data/8.23andme.2?1317326041",destfile="samantha.txt")
+```
+
+## Samantha
+The raw data files from openSNP.org consist of a table of genome coordinates, a genotype for that position, and a rsid identify for each SNP.  We will create a GRanges object with the coordinates and put the genotype and rsid columns in the metadata columns.
+```{r 23andme 3}
+samantha<-read.table("/mnt/afp/micah/R/umn-gcd-bioinformatics-workshop/samantha.txt",skip=14,header=F,stringsAsFactors=F)
+
+#The View function will open a spreadsheet like view of this table
+View(samantha) #note chromosome is in column 2, position is in column 3
+
+
+sam <-GRanges(seqnames=samantha[,2],IRanges(start=samantha[,3],width=1),strand='*',
+              genotype=samantha[,4],rsid=samantha[,1])
+
+```
+
+## Samantha
+```{r 23andme 4}
+head(sam)
+```
+
+## Always Check GRanges with seqlevelStyle() 
+Different sources of data have different was of labeling chromosomes.  UCSC uses "chrX" and NCBI use "X". Since we are going to be comparing this SNP dataset with UCSC genes, we need to change seqlevelStyle() to "UCSC"
+```{r 23andme 5}
+seqlevelsStyle(sam)
+seqlevelsStyle(sam) <- "UCSC"
+seqlevelsStyle(sam)
+```
+
+## Always Check GRanges with seqlevelStyle() 
+```{r 23andme 6}
+head(sam)
+```
+
+## Liftover
+23andme designed this chip-array in 2008 so the chromosome positions listed are based on the hg18 build.   To convert this data over to a more recent release (hg19) we are going to use a function called liftOver() and a "chain file" that has a table of all the old positions with respect to the new positions.  You need a different chain file for each type of transition you are going to do.
+```{r 23andme 7,eval=F}
+download("http://hgdownload.cse.ucsc.edu/goldenPath/hg18/liftOver/hg18ToHg19.over.chain.gz",destfile="hg18ToHg19.over.chain.gz")
+gunzip("hg18ToHg19.over.chain.gz")
+```
+
+## LiftOver
+The liftOver command takes a GRanges object and the chain file as inputs.  It returns the output as a list of GRanges which allows it to do ambiguous mapping (liftOver can also map between species).  Since this mapping is unambiguous we run the unlist() function to get a GRanges object.
+```{r 23andme 8}
+chain<-import.chain("hg18ToHg19.over.chain")
+sam<-unlist(liftOver(sam,chain))
+head(sam)
+```
+
+## TranscriptDB
+Now lets figure out where these SNPS are with respect to genes.  The TxDb package contains a list of UCSC defined known genes for the hg19 assembly.  The genes() function will create a GRanges object containing one range for each Entrez ID.  We could alternatively create a list of exons with the function exons().
+```{r 23andme 9}
+#rename for convenience
+txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene
+
+#this command will make a Granges object with one range for each EntrezID
+genes<-genes(txdb,columns="gene_id")
+class(genes)
+```
+
+## Org.db
+Look up Gene Symbols for each EntrezID using a bioconductor annotation packages.  It is essentially a database just like the ones in File Maker Pro, but it has information for each gene in the genome.  We use "keys" to find what we are looking for but first we need to know what types of keys are in the table.
+```{r 23andme 10}
+#this returns all the keytypes for this database
+keytypes(org.Hs.eg.db)
+```
+
+## Org.db
+Sometimes you want a list of all the keys for a particular keytype.  You can pull out this list with the keys() command.  For the keytype "CHR" the list is relatively short.
+```{r 23andme 11}
+#this returns all the keys for a particular keytype.
+keys(org.Hs.eg.db,"CHR")
+```
+
+
+## Create a GRanges Object for APOE
+We want to know which SNPs overlap with the gene APOE.  We will create a GRanges object for APOE and then look for overlaps.
+```{r 23andme 12}
+#We'll use the keytype "SYMBOL" to retrieve the ENTREZID for APOE
+select(org.Hs.eg.db, keys="APOE", keytype="SYMBOL",columns="ENTREZID")
+```
+
+## Create a GRanges Object for APOE
+```{r 23andme 13}
+#The EntrezID for APOE is 348.  Lets make a Granges object for that one gene. Note that the gene list considers the EntrezID to be a character, not an integer so it is in quotes. 
+apoe<-genes["348"]
+apoe
+```
+
+## Find SNPs in APOE
+We want all the SNPs within the GRange of the gene APOE.  You should find 27 SNPS on this array in this gene.  This overlap doesn't include SNPs near APOE that could also affect the expression of this gene.
+```{r 23andme 14}
+#Now use the findOverlaps() function to find SNPS in this gene
+sam[sam %over% apoe]
+```
+
+## Find SNPs in APOE
+```{r 23andme 15}
+sam[sam %over% apoe][c(11,17)]
+````
+
+The most common allele is rs429358(T) + rs7412(C).   The ApoE4 allele is rs429358(C) + rs7412(C).  People that are homozygous for the ApoE4 allele (rs429358(CC) + rs7412(CC)) have been shown to have significantly higher risk for developing Alzheimer's.  
+
+## 23andme Error Rate
+How should Samantha use this information?  Some estimates for the error rate on these ChIPs are as high as 0.01%.  How many errors are there in Samantha's data?
+```{r 23andme 16}
+# Number of SNPS that are called incorrectly
+(nerrors<-nrow(samantha)*0.01/100)
+
+#there are ~3000 human SNPS linked to a human phenotype
+(prob_interesting<-3000/nrow(samantha))
+```
+## 23andme Error Rate
+```{r 23andme 17}
+#Chance of getting an interesting SNP as an Error 
+100*3000/nrow(samantha)
+(nerrors*prob_interesting)
+```
+One in three people will have an ERROR in a SNP linked to a human phenotype [^fn-pachter].
+
+## EXERCISE 2
+Use the select() function and Org.Hs.eg.db to find the map location and OMIM identifiers for APOE.
+
+Use the select() function to find all the SYMBOLS and GO terms for genes on the Y chromosome.  Hint:  This will be a long list so wrap your function in View().
+
+Does Samantha likely have wet or dry earwax?  Hint: http://www.ncbi.nlm.nih.gov/pubmed/16444273
+
+## EXERCISE 2 Answer
+Use the select() function and Org.Hs.eg.db to find the map location and OMIM identifiers for APOE.
+```{r EXERCISE 2 Answer 1}
+select(org.Hs.eg.db, keys="APOE", keytype="SYMBOL",columns=c("MAP","OMIM"))
+```
+
+## EXERCISE 2 ANSWER
+Use the select() function to find all the SYMBOLS and GO terms for genes on the Y chromosome.  Hint:  This will be a long list so wrap your function in View().
+```{r EXERCISE 2 ANSWER 2}
+View(select(org.Hs.eg.db, keys="Y", keytype="CHR",columns=c("SYMBOL","GO")))
+```
+
+## EXERCISE 2 ANSWER
+Does Samantha likely have wet or dry earwax?  Hint: http://www.ncbi.nlm.nih.gov/pubmed/16444273
+```{r EXERCISE 2 Answer 3}
+sam[grep("rs17822931",sam$rsid)]  #AA is likely dry earwax
+```
+
+## UCSC Annotations
+The research community has amassed a tremendous amount of information about about protein occupancies and chromatin modifications in cell types of humans and model organisms.  One of the most popular repositories for this information is the UCSC Genome Browser.  The rtracklayer package in Bioconductor has tools for browsing and downloading data from UCSC.  This next section was taken from the rtracklayer vignette and you can find more information from
+http://bioconductor.org/packages/release/bioc/vignettes/rtracklayer/inst/doc/rtracklayer.pdf.
+
+- Warning:  The UCSC genome browser can be slow.  The GEO/NCBI section below is a faster alternative to get the same answer.
+
+## Browsing UCSC with rtracklayer
+Open a session with UCSC and find out what "tracks" are available.
+```{r rtracklayer 1, eval=T}
+mySession <- browserSession ()
+genome(mySession) <- "hg19"
+track.names <- trackNames(ucscTableQuery(mySession))
+names(track.names)
+```
+
+## Hudson Alpha TFBS
+Browse what tables are available in the track "HAIB TFBS"
+```{r rtracklayer 2, eval=T}
+haib_tables<-tableNames(ucscTableQuery(mySession,track="HAIB TFBS"))
+haib_tables[grep("Yy1",haib_tables)]
+```
+
+## Broad Histone
+Browse what tables are available in the track "Broad Histone"
+```{r rtracklayer 3, eval=T}
+broad_tables<-tableNames(ucscTableQuery(mySession,track="Broad Histone"))
+head(broad_tables)
+```
+
+## Get APOE Overlaps for YY1 and CTCF
+
+```{r rtracklayer 4, eval=T}
+getTable(ucscTableQuery (mySession, range=apoe+5000, track="HAIB TFBS", table="wgEncodeHaibTfbsGm12878Yy1sc281Pcr1xPkRep1"))
+getTable(ucscTableQuery (mySession, range=apoe+5000, track="Broad Histone", table="wgEncodeBroadHistoneGm12878CtcfStdPk"))
+```
+
+## GEO / NCBI
+Queries to UCSC can be very slow and if you know what you are interested in, it is probably better to download the entire dataset load it into an R.  All of the ENCODE data and data from most publications can be found in GEO at NCBI.  We'll download the TFBS and Histone datasets above to look for overlap genome wide.
+```{r rtracklayer 5,eval=F}
+#download yy1
+download("http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM803406&format=file&file=GSM803406%5Fhg19%5FwgEncodeHaibTfbsGm12878Yy1sc281Pcr1xPkRep1%2EbroadPeak%2Egz",destfile="gm12878_yy1_hg19.broadpeak.gz")
+#Unzip the file
+gunzip("gm12878_yy1_hg19.broadpeak.gz")
+
+#download ctcf
+download("http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM733752&format=file&file=GSM733752%5Fhg19%5FwgEncodeBroadHistoneGm12878CtcfStdPk%2EbroadPeak%2Egz",destfile="gm12878_ctcf_hg19.broadpeak.gz")
+#gunzip
+gunzip("gm12878_ctcf_hg19.broadpeak.gz")
+```
+
+## YY1
+Like the SNP data above, we have to import the data into R and create a GRanges object.  The peak score and signalValue can be stored in the metadata columns. 
+```{r rtracklayer 7}
+#read into R
+yy1<-read.table("gm12878_yy1_hg19.broadpeak",stringsAsFactors=F)
+#convert to Granges
+yy1 <-GRanges(seqnames=yy1[,1],IRanges(start=yy1[,2],end=yy1[,3]),strand='*',
+               score=yy1[,5],signalValue=yy1[,7])
+
+#pretty big list -- lets limit our analysis to chr19
+yy1<-yy1[seqnames(yy1)=="chr19"]
+head(yy1)
+```
+
+## CTCF
+Do the same for CTCF.
+```{r rtracklayer 8}
+#read into R
+ctcf<-read.table("gm12878_ctcf_hg19.broadpeak",stringsAsFactors=F)
+# convert to Granges
+ctcf <-GRanges(seqnames=ctcf[,1],IRanges(start=ctcf[,2],end=ctcf[,3]),strand='*',
+               score=ctcf[,5],signalValue=ctcf[,7],pvalue=ctcf[,8])
+#pretty big list -- lets limit our analysis to chr19
+ctcf<-ctcf[seqnames(ctcf)=="chr19"]
+head(ctcf)
+```
+
+## findOverlaps between yy1 and ctcf
+To can use the findOverlaps function to find regions on Chromosome 19 where ChIP-Seq peaks for yy1 and ctcf overlap.   
+```{r rtracklayer 9}
+(overlaps <- findOverlaps(yy1,ctcf))
+
+#list all the yy1 peaks that overlap ctcf
+y<-yy1[yy1 %over% ctcf]
+length(y)
+```
+
+## Nearest Gene
+Suppose we want to know the nearest gene to each of these peaks.  We will use the function nearest().  This returns the index of the gene so we will also have to use the index of the gene to get the EntrezID. 
+```{r rtracklayer 10}
+y$nearest_gene_index <- nearest(y,genes) 
+y$EntrezID <-unlist(genes[y$nearest_gene_index]$gene_id)
+
+#What we really want is the symbol.  Use org.db to retrieve the symbols for each gene.
+y$symbol<-select(org.Hs.eg.db,keys = y$EntrezID,keytype="ENTREZID",columns="SYMBOL")$SYMBOL
+head(y)
+```
+
+## Overlap with Promoters
+Now we'd like to know if any of these genes fall in the promoters of known genes.  We will make a Granges object with our database of known transcripts using the promoters() function.
+```{r rtracklayer 11}
+promoters<-promoters(txdb,upstream=2000,downstream=500,columns="gene_id")
+promoters<-promoters[seqnames(promoters)=="chr19"]
+```
+
+## Overlap with Promoters
+```{r rtracklayer 12}
+promoters_with_yy1<-promoters[promoters %over% y]
+promoters_with_yy1[grep("348",promoters_with_yy1$gene_id)]
+```
+
+## EXERCISE 3
+Create a scatter plot of the signalValue's for yy1 against ctcf for the 1321 overlapping regions on chromosome 19.  How well are the signals correlated?  Hint: ?cor 
+
+## EXERCISE 3 ANSWER
+Wrong way:
+```{r EXERCISE 3 ANSWER 1}
+x<-yy1[yy1 %over% ctcf]$signalValue
+y<-ctcf[ctcf %over% yy1]$signalValue
+length(x)
+length(y)
+```
+
+## EXERCISE 3 ANSWER
+Right Way:
+```{r EXERCISE 3 ANSWER 2}
+#findOverlaps(query,subject)
+#overlaps<-findOverlaps(yy1,ctcf)
+yy1_sV<-yy1[queryHits(overlaps)]$signalValue
+ctcf_sV<-ctcf[subjectHits(overlaps)]$signalValue
+length(yy1_sV)
+length(ctcf_sV)
+```
+
+## EXERCISE 3 ANSWER
+```{r EXERCISE 3 ANSWER 3}
+plot(yy1_sV,ctcf_sV,main="YY1 and CTCF signalValue Correlation in GM12878 Cells")
+cor(yy1_sV,ctcf_sV)
+```
+
+## Integrative Genomics Viewer (IGV)
+It is always a really good idea to look at the data.  There are tools inside R for viewing and making figures with genomic interval data (i.e. gviz, ggbio).  However you will most likely want to share data with collaborators who do not use R.  One great option for viewing intervals outside of R is the Broad Institute's Integrative Genomics Viewer.  It can be downloaded from this URL:  http://www.broadinstitute.org/software/igv/download.
+
+We can export our genomic ranges using the export() function in the rtracklayer package.
+```{r rtracklayer 13}
+export(yy1,"yy1.bed")
+export(ctcf,"ctcf.bed")
+export(promoters_with_yy1,"promoters_with_yy1.bed")
+export(sam[sam %over% genes[c("348","85320")]],"samantha.bed")
+```
+
+## EXERCISE 4
+Use the IGV menu to load the CTCF Data
+File -> Load from Server -> ENCODE -> Broad Histone -> GM12878 CTCF
+
+Do the peaks from CTCF overlap the CTCF Granges?
+
+## Bioconductor Packages for Session III
+```{r Session III Setup,eval=F}
+source("http://bioconductor.org/biocLite.R")
+biocLite("qvalue")
+biocLite("edgeR")
+biocLite("Biostrings")
+biocLite("GenomicFeatures")
+biocLite("biomaRt")
+biocLite("org.Dm.eg.db")
+biocLite("BSgenome.Dmelanogaster.UCSC.dm3")
+biocLite("BSgenome")
+biocLite("MotifDb")
+biocLite("seqLogo")
+biocLite("motifStack")
+```
+
+## Acknowledgements
+[^fn-ph525x] HarvardX PH525x Data Analysis for Genomics, https://github.com/genomicsclass/labs/blob/master/week2/basic_Bioconductor_infrastructure.Rmd
+
+## Read more about 23andme
+[^fn-pachter] http://liorpachter.wordpress.com/2013/11/30/23andme-genotypes-are-all-wrong/
+http://www.washingtonpost.com/national/health-science/23andme-co-founder-anne-wojcickis-washington-charm-offensive/2014/06/27/b465b086-f240-11e3-9ebc-2ee6f81ed217_story.html
+
+##Use a Bioconductor GWAS catalog to scan every SNP
+http://www.vincebuffalo.com/2012/03/12/23andme-gwascat.html
+
+## Samantha's self-reported phenotypic data:
+https://opensnp.org/users/8

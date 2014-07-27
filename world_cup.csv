@@ -1,0 +1,737 @@
+number,position,Player,Caps,Club,country,age,birthday,isHome
+1,GK,Jefferson,9,Brazil Botafogo,Brazil,31,2 January 1983,TRUE
+2,DF,Daniel Alves,73,Spain Barcelona,Brazil,31,6 May 1983,FALSE
+3,DF,Thiago Silva (captain),45,France Paris Saint-Germain,Brazil,29,22 September 1984,FALSE
+4,DF,David Luiz,34,England Chelsea,Brazil,27,22 April 1987,FALSE
+5,MF,Fernandinho,6,England Manchester City,Brazil,29,4 May 1985,FALSE
+6,DF,Marcelo,29,Spain Real Madrid,Brazil,26,12 May 1988,FALSE
+7,MF,Ramires,41,England Chelsea,Brazil,27,24 March 1987,FALSE
+8,MF,Hernanes,23,Italy Internazionale,Brazil,29,29 May 1985,FALSE
+9,FW,Fred,31,Brazil Fluminense,Brazil,30,3 October 1983,TRUE
+10,FW,Neymar,47,Spain Barcelona,Brazil,22,5 February 1992,FALSE
+11,MF,Oscar,29,England Chelsea,Brazil,22,9 September 1991,FALSE
+12,GK,J?lio C?sar,78,Canada Toronto FC,Brazil,34,3 September 1979,FALSE
+13,DF,Maicon,70,Italy Roma,Brazil,32,26 July 1981,FALSE
+14,DF,Dante,11,Germany Bayern Munich,Brazil,30,18 October 1983,FALSE
+15,DF,Henrique,4,Italy Napoli,Brazil,27,14 October 1986,FALSE
+16,DF,Maxwell,7,France Paris Saint-Germain,Brazil,32,27 August 1981,FALSE
+17,MF,Luiz Gustavo,17,Germany VfL Wolfsburg,Brazil,26,23 July 1987,FALSE
+18,MF,Paulinho,25,England Tottenham Hotspur,Brazil,25,25 July 1988,FALSE
+19,FW,Hulk,33,Russia Zenit Saint Petersburg,Brazil,27,25 July 1986,FALSE
+20,MF,Bernard,10,Ukraine Shakhtar Donetsk,Brazil,21,8 September 1992,FALSE
+21,FW,J?,15,Brazil Atl?tico Mineiro,Brazil,27,20 March 1987,TRUE
+22,GK,Victor,6,Brazil Atl?tico Mineiro,Brazil,31,21 January 1983,TRUE
+23,MF,Willian,5,England Chelsea,Brazil,25,9 August 1988,FALSE
+?,GK,Guy N'dy Assemb?,12,France Guingamp,Cameroon,28,28 February 1986,FALSE
+?,GK,Charles Itandje,7,Turkey Konyaspor,Cameroon,31,2 November 1982,FALSE
+?,GK,Sammy N'Djock,2,Turkey Fethiyespor,Cameroon,24,25 February 1990,FALSE
+?,GK,Lo?c Feudjou,0,Cameroon Coton Sport,Cameroon,22,14 April 1992,TRUE
+?,DF,Nicolas N'Koulou,45,France Marseille,Cameroon,24,27 March 1990,FALSE
+?,DF,Aur?lien Chedjou,30,Turkey Galatasaray,Cameroon,28,20 June 1985,FALSE
+?,DF,Henri Bedimo,29,France Lyon,Cameroon,30,4 June 1984,FALSE
+?,DF,Benoit Assou-Ekotto,20,England Queens Park Rangers,Cameroon,30,24 March 1984,FALSE
+?,DF,Dany Nounkeu,14,Turkey Besiktas,Cameroon,28,11 April 1986,FALSE
+?,DF,Ga?tan Bong,11,Greece Olympiacos,Cameroon,26,25 April 1988,FALSE
+?,DF,Allan Nyom,7,Spain Granada,Cameroon,26,10 May 1988,FALSE
+?,DF,Jean-Armel Kana-Biyik,5,France Rennes,Cameroon,24,3 July 1989,FALSE
+?,DF,Cedric Djeugoue,2,Cameroon Coton Sport,Cameroon,21,28 August 1992,TRUE
+?,MF,Jean Makoun,66,France Rennes,Cameroon,31,29 May 1983,FALSE
+?,MF,St?phane Mbia,48,Spain Sevilla,Cameroon,28,20 May 1986,FALSE
+?,MF,Alex Song,44,Spain Barcelona,Cameroon,26,9 September 1987,FALSE
+?,MF,Landry N'Gu?mo,38,France Bordeaux,Cameroon,28,28 November 1985,FALSE
+?,MF,Eyong Enoh,35,Turkey Antalyaspor,Cameroon,28,23 March 1986,FALSE
+?,MF,Jo?l Matip,20,Germany Schalke 04,Cameroon,22,8 August 1991,FALSE
+?,MF,Edgar Salli,7,France Lens,Cameroon,21,17 August 1992,FALSE
+?,MF,Raoul Lo?,2,Spain Osasuna,Cameroon,25,31 January 1989,FALSE
+?,FW,Samuel Eto'o,115,England Chelsea,Cameroon,33,10 March 1981,FALSE
+?,FW,Pierre Web?,54,Turkey Fenerbah?e,Cameroon,32,20 January 1982,FALSE
+?,GK,Stipe Pletikosa,109,Russia Rostov,Croatia,35,8 January 1979,FALSE
+?,GK,Danijel Suba?ic,6,France Monaco,Croatia,29,27 October 1984,FALSE
+?,GK,Oliver Zelenika,0,Croatia NK Lokomotiva,Croatia,21,14 May 1993,TRUE
+?,DF,Darijo Srna,111,Ukraine Shakhtar Donetsk,Croatia,32,1 May 1982,FALSE
+?,DF,Vedran Corluka,71,Russia Lokomotiv Moscow,Croatia,28,5 February 1986,FALSE
+?,DF,Danijel Pranjic,48,Greece Panathinaikos,Croatia,32,2 December 1981,FALSE
+?,DF,Dejan Lovren,23,England Southampton,Croatia,24,5 July 1989,FALSE
+?,DF,Domagoj Vida,22,Ukraine Dynamo Kyiv,Croatia,25,29 April 1989,FALSE
+?,DF,Gordon Schildenfeld,20,Greece Panathinaikos,Croatia,29,18 March 1985,FALSE
+?,DF,?ime Vrsaljko,5,Italy Genoa,Croatia,22,10 January 1992,FALSE
+?,DF,Igor Bubnjic,2,Italy Udinese,Croatia,21,17 July 1992,FALSE
+?,MF,Luka Modric,73,Spain Real Madrid,Croatia,28,9 September 1985,FALSE
+?,MF,Ivan Rakitic,60,Spain Sevilla,Croatia,26,10 March 1988,FALSE
+?,MF,Ognjen Vukojevic,54,Ukraine Dynamo Kyiv,Croatia,30,20 December 1983,FALSE
+?,MF,Ivan Peri?ic,27,Germany VfL Wolfsburg,Croatia,25,2 February 1989,FALSE
+?,MF,Milan Badelj,9,Germany Hamburger SV,Croatia,25,25 February 1989,FALSE
+?,MF,Mateo Kovacic,8,Italy Internazionale,Croatia,20,6 May 1994,FALSE
+?,MF,Sammir,4,Spain Getafe,Croatia,27,23 April 1987,FALSE
+?,MF,Marcelo Brozovic,0,Croatia Dinamo Zagreb,Croatia,21,16 October 1992,TRUE
+?,MF,Ivan Mocinic,0,Croatia Rijeka,Croatia,21,30 April 1993,TRUE
+?,MF,Mario Pa?alic,0,Croatia Hajduk Split,Croatia,19,9 February 1995,TRUE
+?,FW,Ivica Olic,90,Germany VfL Wolfsburg,Croatia,34,14 September 1979,FALSE
+?,FW,Eduardo,62,Ukraine Shakhtar Donetsk,Croatia,31,25 February 1983,FALSE
+?,GK,Guillermo Ochoa,57,France Ajaccio,Mexico,28,13 July 1985,FALSE
+?,GK,Jos? de Jes?s Corona,33,Mexico Cruz Azul,Mexico,33,26 January 1981,TRUE
+?,GK,Alfredo Talavera,13,Mexico Toluca,Mexico,31,18 September 1982,TRUE
+?,DF,Carlos Salcido,120,Mexico UANL,Mexico,34,2 April 1980,TRUE
+?,DF,Rafael M?rquez,118,Mexico Le?n,Mexico,35,13 February 1979,TRUE
+?,DF,Andr?s Guardado,101,Germany Bayer Leverkusen,Mexico,27,28 September 1986,FALSE
+?,DF,Francisco Javier Rodr?guez,92,Mexico Am?rica,Mexico,32,20 October 1981,TRUE
+?,DF,H?ctor Moreno,50,Spain Espanyol,Mexico,26,17 January 1988,FALSE
+?,DF,Paul Aguilar,28,Mexico Am?rica,Mexico,28,6 March 1986,TRUE
+?,DF,Diego Reyes,13,Portugal Porto,Mexico,21,19 September 1992,FALSE
+?,DF,Miguel Lay?n,12,Mexico Am?rica,Mexico,25,25 June 1988,TRUE
+?,MF,Carlos Pe?a,14,Mexico Le?n,Mexico,24,29 March 1990,TRUE
+?,MF,Marco Fabi?n,12,Mexico Cruz Azul,Mexico,24,21 July 1989,TRUE
+?,MF,Luis Montes,11,Mexico Le?n,Mexico,28,16 May 1986,TRUE
+?,MF,H?ctor Herrera,10,Portugal Porto,Mexico,24,19 April 1990,FALSE
+?,MF,Miguel ?ngel Ponce,7,Mexico Toluca,Mexico,25,12 April 1989,TRUE
+?,MF,Isa?c Brizuela,6,Mexico Toluca,Mexico,23,28 August 1990,TRUE
+?,MF,Jos? Juan V?zquez,2,Mexico Le?n,Mexico,26,14 March 1988,TRUE
+?,FW,Giovani dos Santos,73,Spain Villarreal,Mexico,25,11 May 1989,FALSE
+?,FW,Javier Hern?ndez,59,England Manchester United,Mexico,26,1 June 1988,FALSE
+?,FW,Oribe Peralta,31,Mexico Santos Laguna,Mexico,30,12 January 1984,TRUE
+?,FW,Ra?l Jim?nez,23,Mexico Am?rica,Mexico,23,5 May 1991,TRUE
+?,FW,Alan Pulido,4,Mexico UANL,Mexico,23,8 March 1991,TRUE
+?,GK,Eugene Galekovic,8,Australia Adelaide United,Australia,33,12 June 1981,TRUE
+?,GK,Mathew Ryan,6,Belgium Club Brugge,Australia,22,8 April 1992,FALSE
+?,GK,Mitchell Langerak,3,Germany Borussia Dortmund,Australia,25,22 August 1988,FALSE
+?,GK,Mark Birighitti,1,Australia Newcastle Jets,Australia,23,17 April 1991,TRUE
+?,DF,Luke Wilkshire,80,Russia Dynamo Moscow,Australia,32,1 October 1981,FALSE
+?,DF,Matthew ?piranovic,17,Australia Western Sydney Wanderers,Australia,25,27 June 1988,TRUE
+?,DF,Ryan McGowan,9,China Shandong Luneng Taishan,Australia,24,15 August 1989,FALSE
+?,DF,Ivan Franjic,8,Australia Brisbane Roar,Australia,26,10 September 1987,TRUE
+?,DF,Jason Davidson,6,Netherlands Heracles Almelo,Australia,22,29 June 1991,FALSE
+?,DF,Alex Wilkinson,2,South Korea Jeonbuk Hyundai Motors,Australia,29,13 August 1984,FALSE
+?,DF,Bailey Wright,0,England Preston North End,Australia,21,28 July 1992,FALSE
+?,MF,Mark Bresciano,73,Qatar Al-Gharafa,Australia,34,11 February 1980,FALSE
+?,MF,Matt McKay,46,Australia Brisbane Roar,Australia,31,11 January 1983,TRUE
+?,MF,Mile Jedinak (captain),43,England Crystal Palace,Australia,29,3 August 1984,FALSE
+?,MF,Mark Milligan,28,Australia Melbourne Victory,Australia,28,4 August 1985,TRUE
+?,MF,Dario Vido?ic,22,Switzerland Sion,Australia,27,8 April 1987,FALSE
+?,MF,Tommy Oar,14,Netherlands Utrecht,Australia,22,10 December 1991,FALSE
+?,MF,James Holland,13,Austria Austria Wien,Australia,25,15 May 1989,FALSE
+?,MF,James Troisi,10,Italy Atalanta,Australia,25,3 July 1988,FALSE
+?,MF,Tom Rogic,9,Scotland Celtic,Australia,21,16 December 1992,FALSE
+?,MF,Oliver Bozanic,3,Switzerland Luzern,Australia,25,8 January 1989,FALSE
+?,MF,Ben Halloran,1,Germany Fortuna D?sseldorf,Australia,21,14 June 1992,FALSE
+?,MF,Massimo Luongo,1,England Swindon Town,Australia,21,25 September 1992,FALSE
+?,GK,Claudio Bravo,78,Spain Real Sociedad,Chile,31,13 April 1983,FALSE
+?,GK,Johnny Herrera,7,Chile Universidad de Chile,Chile,33,9 May 1981,TRUE
+?,GK,Cristopher Toselli,4,Chile Universidad Cat?lica,Chile,25,22 June 1988,TRUE
+?,DF,Gonzalo Jara,64,England Nottingham Forest,Chile,28,29 August 1985,FALSE
+?,DF,Gary Medel,59,Wales Cardiff City,Chile,26,3 August 1987,FALSE
+?,DF,Mauricio Isla,45,Italy Juventus,Chile,26,12 June 1988,FALSE
+?,DF,Marcos Gonz?lez,28,Chile Uni?n Espa?ola,Chile,34,9 June 1980,TRUE
+?,DF,Eugenio Mena,23,Brazil Santos,Chile,25,18 July 1988,FALSE
+?,DF,Jos? Rojas,18,Chile Universidad de Chile,Chile,31,3 June 1983,TRUE
+?,DF,Miiko Albornoz,1,Sweden Malm?,Chile,23,3 November 1990,FALSE
+?,MF,Jean Beausejour,58,England Wigan Athletic,Chile,30,3 June 1984,FALSE
+?,MF,Jorge Valdivia,56,Brazil Palmeiras,Chile,30,3 October 1983,FALSE
+?,MF,Arturo Vidal,53,Italy Juventus,Chile,27,22 May 1987,FALSE
+?,MF,Carlos Carmona,42,Italy Atalanta,Chile,27,21 February 1987,FALSE
+?,MF,Rodrigo Millar,28,Mexico Atlas,Chile,32,3 November 1981,FALSE
+?,MF,Jos? Pedro Fuenzalida,22,Chile Colo-Colo,Chile,29,22 February 1985,TRUE
+?,MF,Charles Ar?nguiz,19,Brazil Internacional,Chile,25,17 April 1989,FALSE
+?,MF,Marcelo D?az,19,Switzerland Basel,Chile,27,30 December 1986,FALSE
+?,MF,Felipe Guti?rrez,16,Netherlands Twente,Chile,23,8 October 1990,FALSE
+?,MF,Francisco Silva,11,Spain Osasuna,Chile,28,11 February 1986,FALSE
+?,FW,Alexis S?nchez,65,Spain Barcelona,Chile,25,19 December 1988,FALSE
+?,FW,Esteban Paredes,34,Chile Colo-Colo,Chile,33,August 1, 1980
+?,FW,Eduardo Vargas,28,Spain Valencia,Chile,24,20 November 1989,FALSE
+?,GK,Michel Vorm,14,Wales Swansea City,Netherlands,30,3 October 1983,FALSE
+?,GK,Jasper Cillessen,6,Netherlands Ajax,Netherlands,25,22 April 1989,TRUE
+?,GK,Tim Krul,5,England Newcastle United,Netherlands,26,3 April 1988,FALSE
+?,GK,Jeroen Zoet,0,Netherlands PSV Eindhoven,Netherlands,23,6 January 1991,TRUE
+?,DF,Ron Vlaar,22,England Aston Villa,Netherlands,29,16 February 1985,FALSE
+?,DF,Bruno Martins Indi,14,Netherlands Feyenoord,Netherlands,22,8 February 1992,TRUE
+?,DF,Daryl Janmaat,14,Netherlands Feyenoord,Netherlands,24,22 July 1989,TRUE
+?,DF,Stefan de Vrij,10,Netherlands Feyenoord,Netherlands,22,5 February 1992,TRUE
+?,DF,Patrick van Aanholt,2,Netherlands Vitesse Arnhem,Netherlands,23,29 August 1990,TRUE
+?,DF,Jo?l Veltman,2,Netherlands Ajax,Netherlands,22,15 January 1992,TRUE
+?,DF,Paul Verhaegh,2,Germany FC Augsburg,Netherlands,30,1 September 1983,FALSE
+?,DF,Terence Kongolo,1,Netherlands Feyenoord,Netherlands,20,14 February 1994,TRUE
+?,DF,Karim Rekik,1,Netherlands PSV Eindhoven,Netherlands,19,2 December 1994,TRUE
+?,MF,Wesley Sneijder,97,Turkey Galatasaray,Netherlands,30,9 June 1984,FALSE
+?,MF,Arjen Robben,73,Germany Bayern Munich,Netherlands,30,23 January 1984,FALSE
+?,MF,Nigel de Jong,69,Italy Milan,Netherlands,29,13 November 1984,FALSE
+?,MF,Daley Blind,10,Netherlands Ajax,Netherlands,24,9 March 1990,TRUE
+?,MF,Jonathan de Guzm?n,9,Wales Swansea City,Netherlands,26,13 September 1987,FALSE
+?,MF,Jordy Clasie,8,Netherlands Feyenoord,Netherlands,22,27 June 1991,TRUE
+?,MF,Memphis Depay,5,Netherlands PSV Eindhoven,Netherlands,20,13 February 1994,TRUE
+?,MF,Leroy Fer,5,England Norwich City,Netherlands,24, 5 January 1990,FALSE
+?,MF,Georginio Wijnaldum,4,Netherlands PSV Eindhoven,Netherlands,23,11 November 1990,TRUE
+?,MF,Jean-Paul Bo?tius,1,Netherlands Feyenoord,Netherlands,20,22 March 1994,TRUE
+?,GK,Iker Casillas (captain),153,Spain Real Madrid,Spain,33,20 May 1981,TRUE
+?,GK,Pepe Reina,30,Italy Napoli,Spain,31,31 August 1982,FALSE
+?,GK,David de Gea,0,England Manchester United,Spain,23,7 November 1990,FALSE
+?,DF,Sergio Ramos,115,Spain Real Madrid,Spain,28,30 March 1986,TRUE
+?,DF,Gerard Piqu?,59,Spain Barcelona,Spain,27,2 February 1987,TRUE
+?,DF,Ra?l Albiol,45,Italy Napoli,Spain,28,4 September 1985,FALSE
+?,DF,Jordi Alba,25,Spain Barcelona,Spain,25,21 March 1989,TRUE
+?,DF,Juanfran,6,Spain Atl?tico Madrid,Spain,29,9 January 1985,TRUE
+?,DF,C?sar Azpilicueta,5,England Chelsea,Spain,24,28 August 1989,FALSE
+?,DF,Alberto Moreno,2,Spain Sevilla,Spain,21,5 July 1992,TRUE
+?,DF,Daniel Carvajal,0,Spain Real Madrid,Spain,22,11 January 1992,TRUE
+?,MF,Xavi,130,Spain Barcelona,Spain,34,25 January 1980,TRUE
+?,MF,Xabi Alonso,109,Spain Real Madrid,Spain,32,25 November 1981,TRUE
+?,MF,Andr?s Iniesta,94,Spain Barcelona,Spain,30,11 May 1984,TRUE
+?,MF,Cesc F?bregas,87,Spain Barcelona,Spain,27,4 May 1987,TRUE
+?,MF,David Silva,78,England Manchester City,Spain,28,8 January 1986,FALSE
+?,MF,Sergio Busquets,63,Spain Barcelona,Spain,25,16 July 1988,TRUE
+?,MF,Santi Cazorla,61,England Arsenal,Spain,29,13 December 1984,FALSE
+?,MF,Jes?s Navas,34,England Manchester City,Spain,28,21 November 1985,FALSE
+?,MF,Juan Mata,31,England Manchester United,Spain,26,28 April 1988,FALSE
+?,MF,Javi Mart?nez,15,Germany Bayern Munich,Spain,25,2 September 1988,FALSE
+?,MF,Koke,7,Spain Atl?tico Madrid,Spain,22,8 January 1992,TRUE
+?,MF,Ander Iturraspe,0,Spain Athletic Bilbao,Spain,25,8 March 1989,TRUE
+?,GK,Faryd Mondrag?n,54,Colombia Deportivo Cali,Colombia,42,21 June 1971,TRUE
+?,GK,David Ospina,42,France Nice,Colombia,25,31 August 1988,FALSE
+?,GK,Camilo Vargas,0,Colombia Santa Fe,Colombia,24,1 September 1989,TRUE
+?,DF,Mario Yepes,95,Italy Atalanta,Colombia,38,13 January 1976,FALSE
+?,DF,Luis Amaranto Perea,75,Mexico Cruz Azul,Colombia,35,30 January 1979,FALSE
+?,DF,Juan Camilo Z??iga,51,Italy Napoli,Colombia,28,14 December 1985,FALSE
+?,DF,Pablo Armero,50,England West Ham United,Colombia,27,2 November 1986,FALSE
+?,DF,Cristi?n Zapata,20,Italy Milan,Colombia,27,30 September 1986,FALSE
+?,DF,Carlos Vald?s,12,Argentina San Lorenzo,Colombia,29,22 May 1985,FALSE
+?,DF,Santiago Arias,4,Netherlands PSV Eindhoven,Colombia,22,13 January 1992,FALSE
+?,DF,?der ?lvarez Balanta,1,Argentina River Plate,Colombia,21,28 February 1993,FALSE
+?,MF,Fredy Guar?n,48,Italy Internazionale,Colombia,27,30 June 1986,FALSE
+?,MF,Abel Aguilar,47,France Toulouse,Colombia,29,6 January 1985,FALSE
+?,MF,Carlos S?nchez,43,Spain Elche,Colombia,28,6 February 1986,FALSE
+?,MF,Aldo Le?o Ram?rez,29,Mexico Morelia,Colombia,33,18 April 1981,FALSE
+?,MF,Juan Guillermo Cuadrado,26,Italy Fiorentina,Colombia,26,26 May 1988,FALSE
+?,MF,James Rodr?guez,21,France Monaco,Colombia,22,12 July 1991,FALSE
+?,MF,Alexander Mej?a,8,Colombia Atl?tico Nacional,Colombia,25,7 September 1988,TRUE
+?,MF,Juan Fernando Quintero,3,Portugal Porto,Colombia,21,18 January 1993,FALSE
+?,FW,Radamel Falcao,51,France Monaco,Colombia,28,10 February 1986,FALSE
+?,FW,Te?filo Guti?rrez,28,Argentina River Plate,Colombia,29,28 May 1985,FALSE
+?,FW,Jackson Mart?nez,26,Portugal Porto,Colombia,27,3 October 1986,FALSE
+?,FW,Adri?n Ramos,23,Germany Hertha BSC,Colombia,28,22 January 1986,FALSE
+?,GK,Boubacar Barry,79,Belgium Lokeren,Ivory Coast,34,30 December 1979,FALSE
+?,GK,Sayouba Mand?,1,Norway Stab?k,Ivory Coast,21,5 June 1993,FALSE
+?,GK,Badra Ali Sangar?,1,Ivory Coast ASEC Mimosas,Ivory Coast,28,30 May 1986,TRUE
+?,GK,Sylvain Gbohouo,0,Ivory Coast S?w? Sport,Ivory Coast,25,29 October 1988,TRUE
+?,DF,Didier Zokora,119,Turkey Trabzonspor,Ivory Coast,33,14 December 1980,FALSE
+?,DF,Kolo Tour?,106,England Liverpool,Ivory Coast,33,19 March 1981,FALSE
+?,DF,Arthur Boka,78,Germany VfB Stuttgart,Ivory Coast,31,2 April 1983,FALSE
+?,DF,Sol Bamba,42,Turkey Trabzonspor,Ivory Coast,29,13 January 1985,FALSE
+?,DF,Benjamin Angoua,18,France Valenciennes,Ivory Coast,27,28 November 1986,FALSE
+?,DF,Serge Aurier,8,France Toulouse,Ivory Coast,21,24 December 1992,FALSE
+?,DF,Ousmane Viera,3,Turkey ?aykur Rizespor,Ivory Coast,27,21 December 1986,FALSE
+?,DF,Constant Djakpa,3,Germany Eintracht Frankfurt,Ivory Coast,27,17 October 1986,FALSE
+?,DF,Jean-Daniel Akpa-Akpro,0,France Toulouse,Ivory Coast,21,11 October 1992,FALSE
+?,DF,Brice Dja Dj?dj?,0,France Marseille,Ivory Coast,23,23 December 1990,FALSE
+?,MF,Yaya Tour?,83,England Manchester City,Ivory Coast,31,13 May 1983,FALSE
+?,MF,Cheick Tiot?,43,England Newcastle United,Ivory Coast,27,21 June 1986,FALSE
+?,MF,Didier Ya Konan,25,Germany Hannover 96,Ivory Coast,30,25 February 1984,FALSE
+?,MF,Max Gradel,24,France Saint-?tienne,Ivory Coast,26,30 November 1987,FALSE
+?,MF,Serey Die,5,Switzerland Basel,Ivory Coast,29,7 November 1984,FALSE
+?,MF,Mathis Bolly,2,Germany Fortuna D?sseldorf,Ivory Coast,23,14 November 1990,FALSE
+?,MF,Isma?l Diomande,0,France Saint-?tienne,Ivory Coast,21,28 August 1992,FALSE
+?,FW,Didier Drogba,99,Turkey Galatasaray,Ivory Coast,36,11 March 1978,FALSE
+?,FW,Salomon Kalou,64,France Lille,Ivory Coast,28,5 August 1985,FALSE
+?,GK,Orestis Karnezis,17,Spain Granada,Greece,28, 11 July 1985,FALSE
+?,GK,Stefanos Kapino,1,Greece Panathinaikos,Greece,20,18 March 1994,TRUE
+?,GK,Panagiotis Glykos,1,Greece PAOK,Greece,28,3 June 1986,TRUE
+?,DF,Vasilis Torosidis,64,Italy Roma,Greece,29,10 June 1985,FALSE
+?,DF,Loukas Vyntra,47,Spain Levante,Greece,33,5 February 1981,FALSE
+?,DF,Sokratis Papastathopoulos,46,Germany Borussia Dortmund,Greece,26,9 June 1988,FALSE
+?,DF,Giannis Maniatis,28,Greece Olympiacos,Greece,27,12 October 1986,TRUE
+?,DF,Jos? Holebas,20,Greece Olympiacos,Greece,29,27 June 1984,TRUE
+?,DF,Vangelis Moras,16,Italy Hellas Verona,Greece,32,26 August 1981,FALSE
+?,DF,Giorgos Tzavellas,12,Greece PAOK,Greece,26,26 November 1987,TRUE
+?,DF,Kostas Manolas,6,Greece Olympiacos,Greece,22,14 June 1991,TRUE
+?,MF,Giorgos Karagounis (captain),132,England Fulham,Greece,37,6 March 1977,FALSE
+?,MF,Kostas Katsouranis,109,Greece PAOK,Greece,34,21 June 1979,TRUE
+?,MF,Alexandros Tziolis,47,Turkey Kayserispor,Greece,29,13 February 1985,FALSE
+?,MF,Giannis Fetfatzidis,16,Italy Genoa,Greece,23,21 December 1990,FALSE
+?,MF,Lazaros Christodoulopoulos,16,Italy Bologna,Greece,27,19 December 1986,FALSE
+?,MF,Panagiotis Kone,14,Italy Bologna,Greece,26,26 July 1987,FALSE
+?,MF,Panagiotis Tachtsidis,4,Italy Torino,Greece,23,15 February 1991,FALSE
+?,MF,Andreas Samaris,3,Greece Olympiacos,Greece,24,13 June 1989,TRUE
+?,FW,Dimitris Salpingidis,73,Greece PAOK,Greece,32,18 August 1981,TRUE
+?,FW,Giorgos Samaras,71,Scotland Celtic,Greece,29,21 February 1985,FALSE
+?,FW,Theofanis Gekas,69,Turkey Konyaspor,Greece,34,23 May 1980,FALSE
+?,FW,Kostas Mitroglou,29,England Fulham,Greece,26,12 March 1988,FALSE
+1,GK,Eiji Kawashima,55,Belgium Standard Li?ge,Japan,31,20 March 1983,FALSE
+2,DF,Atsuto Uchida,66,Germany Schalke 04,Japan,26,27 March 1988,FALSE
+3,DF,Gotoku Sakai,12,Germany VfB Stuttgart,Japan,23,14 February 1991,FALSE
+4,MF,Keisuke Honda,54,Italy Milan,Japan,27,13 June 1986,FALSE
+5,DF,Yuto Nagatomo,68,Italy Internazionale,Japan,27,12 September 1986,FALSE
+6,DF,Masato Morishige,8,Japan F.C. Tokyo,Japan,27,21 May 1987,TRUE
+7,MF,Yasuhito Endo,142,Japan Gamba Osaka,Japan,34,28 January 1980,TRUE
+8,MF,Hiroshi Kiyotake,25,Germany 1. FC N?rnberg,Japan,24,12 November 1989,FALSE
+9,FW,Shinji Okazaki,74,Germany Mainz 05,Japan,28,16 April 1986,FALSE
+10,MF,Shinji Kagawa,55,England Manchester United,Japan,25,17 March 1989,FALSE
+11,FW,Yoichiro Kakitani,10,Japan Cerezo Osaka,Japan,24,3 January 1990,TRUE
+12,GK,Shusaku Nishikawa,12,Japan Urawa Red Diamonds,Japan,27,18 June 1986,TRUE
+13,FW,Yoshito Okubo,55,Japan Kawasaki Frontale,Japan,32,9 June 1982,TRUE
+14,MF,Toshihiro Aoyama,4,Japan Sanfrecce Hiroshima,Japan,28,22 February 1986,TRUE
+15,DF,Yasuyuki Konno,79,Japan Gamba Osaka,Japan,31,25 January 1983,TRUE
+16,MF,Hotaru Yamaguchi,10,Japan Cerezo Osaka,Japan,23,6 October 1990,TRUE
+17,MF,Makoto Hasebe (captain),78,Germany 1. FC N?rnberg,Japan,30,18 January 1984,FALSE
+18,FW,Yuya Osako,7,Germany 1860 M?nchen,Japan,24,18 May 1990,FALSE
+19,DF,Masahiko Inoha,20,Japan Jubilo Iwata,Japan,30,28 August 1983,TRUE
+20,FW,Manabu Saito,4,Japan Yokohama F. Marinos,Japan,24,4 April 1990,TRUE
+21,DF,Hiroki Sakai,16,Germany Hannover 96,Japan,24,12 April 1990,FALSE
+22,DF,Maya Yoshida,39,England Southampton,Japan,25,24 August 1988,FALSE
+23,GK,Shuichi Gonda,2,Japan F.C. Tokyo,Japan,25,3 March 1989,TRUE
+?,GK,Keylor Navas,51,Spain Levante,Costa Rica,27,15 December 1986,FALSE
+?,GK,Patrick Pemberton,20,Costa Rica Alajuelense,Costa Rica,32,24 April 1982,FALSE
+?,GK,Daniel Cambronero,4,Costa Rica Herediano,Costa Rica,28,8 January 1986,FALSE
+?,GK,Esteban Alvarado,2,Netherlands AZ,Costa Rica,25,28 April 1989,FALSE
+?,DF,Michael Uma?a,81,Costa Rica Saprissa,Costa Rica,31,16 July 1982,FALSE
+?,DF,J?nior D?az,60,Germany Mainz 05,Costa Rica,30,12 September 1983,FALSE
+?,DF,Roy Miller,47,United States New York Red Bulls,Costa Rica,29,24 November 1984,FALSE
+?,DF,Giancarlo Gonz?lez,33,United States Columbus Crew,Costa Rica,26,8 February 1988,FALSE
+?,DF,Johnny Acosta,25,Costa Rica Alajuelense,Costa Rica,30,21 July 1983,FALSE
+?,DF,Cristian Gamboa,24,Norway Rosenborg,Costa Rica,24,24 October 1989,FALSE
+?,DF,?scar Duarte,10,Belgium Club Brugge,Costa Rica,25,3 June 1989,FALSE
+?,DF,Heiner Mora,2,Costa Rica Saprissa,Costa Rica,29,20 June 1984,FALSE
+?,DF,Kendall Waston,2,Costa Rica Saprissa,Costa Rica,26,1 January 1988,FALSE
+?,DF,Waylon Francis,1,United States Columbus Crew,Costa Rica,23,20 September 1990,FALSE
+?,MF,Celso Borges,61,Sweden AIK,Costa Rica,26,27 May 1988,FALSE
+?,MF,Christian Bola?os,53,Denmark Copenhagen,Costa Rica,30,17 May 1984,FALSE
+?,MF,Michael Barrantes,42,Norway Aalesund,Costa Rica,30,4 October 1983,FALSE
+?,MF,Carlos Hern?ndez,39,New Zealand Wellington Phoenix,Costa Rica,32,9 April 1982,FALSE
+?,MF,Jos? Miguel Cubero,33,Costa Rica Herediano,Costa Rica,27,14 February 1987,FALSE
+?,MF,Yeltsin Tejeda,21,Costa Rica Saprissa,Costa Rica,22,17 March 1992,FALSE
+?,MF,Ariel Rodr?guez,16,Costa Rica Alajuelense,Costa Rica,28,22 April 1986,FALSE
+?,MF,Esteban Granados,11,Costa Rica Herediano,Costa Rica,28,25 October 1985,FALSE
+?,MF,Diego Calvo,9,Norway V?lerenga,Costa Rica,23,25 March 1991,FALSE
+1,GK,Joe Hart,39,England Manchester City,England,27,19 May 1987,TRUE
+2,DF,Glen Johnson,50,England Liverpool,England,29,23 August 1984,TRUE
+3,DF,Leighton Baines,22,England Everton,England,29,11 December 1984,TRUE
+4,MF,Steven Gerrard (captain),109,England Liverpool,England,34,30 May 1980,TRUE
+5,DF,Gary Cahill,23,England Chelsea,England,28,19 December 1985,TRUE
+6,DF,Phil Jagielka,24,England Everton,England,31,17 August 1982,TRUE
+7,MF,Jack Wilshere,15,England Arsenal,England,22,1 January 1992,TRUE
+8,MF,Frank Lampard,103,England Chelsea,England,35,20 June 1978,TRUE
+9,FW,Daniel Sturridge,10,England Liverpool,England,24,1 September 1989,TRUE
+10,FW,Wayne Rooney,89,England Manchester United,England,28,24 October 1985,TRUE
+11,FW,Danny Welbeck,21,England Manchester United,England,23,26 November 1990,TRUE
+12,DF,Chris Smalling,10,England Manchester United,England,24,22 November 1989,TRUE
+13,GK,Ben Foster,6,England West Bromwich Albion,England,31,3 May 1983,TRUE
+14,MF,Jordan Henderson,8,England Liverpool,England,23,17 June 1990,TRUE
+15,MF,Alex Oxlade-Chamberlain,14,England Arsenal,England,20,15 August 1993,TRUE
+16,DF,Phil Jones,9,England Manchester United,England,22,21 February 1992,TRUE
+17,MF,James Milner,45,England Manchester City,England,28,4 January 1986,TRUE
+18,FW,Rickie Lambert,4,England Southampton,England,32,16 February 1982,TRUE
+19,MF,Raheem Sterling,2,England Liverpool,England,19,8 December 1994,TRUE
+20,MF,Adam Lallana,3,England Southampton,England,26,10 May 1988,TRUE
+21,MF,Ross Barkley,3,England Everton,England,20,5 December 1993,TRUE
+22,GK,Fraser Forster,1,Scotland Celtic,England,26,17 March 1988,FALSE
+23,DF,Luke Shaw,1,England Southampton,England,18,12 July 1995,TRUE
+?,GK,Gianluigi Buffon,139,Italy Juventus,Italy,36,28 January 1978,TRUE
+?,GK,Salvatore Sirigu,7,France Paris Saint-Germain,Italy,27,12 January 1987,FALSE
+?,GK,Mattia Perin,0,Italy Genoa,Italy,21,10 November 1992,TRUE
+?,DF,Giorgio Chiellini,67,Italy Juventus,Italy,29,14 August 1984,TRUE
+?,DF,Andrea Barzagli,47,Italy Juventus,Italy,33,08 May 1981,TRUE
+?,DF,Leonardo Bonucci,35,Italy Juventus,Italy,27,01 May 1987,TRUE
+?,DF,Christian Maggio,33,Italy Napoli,Italy,32,11 February 1982,TRUE
+?,DF,Andrea Ranocchia,12,Italy Internazionale,Italy,26,16 February 1988,TRUE
+?,DF,Ignazio Abate,11,Italy Milan,Italy,27,12 November 1986,TRUE
+?,DF,Mattia De Sciglio,9,Italy Milan,Italy,21,20 October 1992,TRUE
+?,DF,Manuel Pasqual,3,Italy Fiorentina,Italy,32,13 March 1982,TRUE
+?,DF,Gabriel Paletta,1,Italy Parma,Italy,28,15 February 1986,TRUE
+?,DF,Matteo Darmian,0,Italy Torino,Italy,24,2 December 1989,TRUE
+?,MF,Andrea Pirlo,108,Italy Juventus,Italy,35,19 May 1979,TRUE
+?,MF,Daniele De Rossi,93,Italy Roma,Italy,30,24 July 1983,TRUE
+?,MF,Riccardo Montolivo,57,Italy Milan,Italy,29,18 January 1985,TRUE
+?,MF,Claudio Marchisio,41,Italy Juventus,Italy,28,19 January 1986,TRUE
+?,MF,Alberto Aquilani,33,Italy Fiorentina,Italy,29,7 July 1984,TRUE
+?,MF,Thiago Motta,19,France Paris Saint-Germain,Italy,31,28 August 1982,FALSE
+?,MF,Antonio Candreva,19,Italy Lazio,Italy,27,28 February 1987,TRUE
+?,MF,Marco Verratti,4,France Paris Saint-Germain,Italy,21,5 November 1992,FALSE
+?,MF,Marco Parolo,2,Italy Parma,Italy,29,25 January 1985,TRUE
+?,MF,R?mulo,0,Italy Verona,Italy,27,22 May 1987,TRUE
+?,GK,Fernando Muslera,60,Turkey Galatasaray,Uruguay,27,16 June 1986,FALSE
+?,GK,Mart?n Silva,4,Brazil Vasco da Gama,Uruguay,31,25 March 1983,FALSE
+?,GK,Rodrigo Mu?oz,0,Paraguay Libertad,Uruguay,32,22 January 1982,FALSE
+?,DF,Diego Lugano,92,England West Bromwich Albion,Uruguay,33,2 November 1980,FALSE
+?,DF,Maxi Pereira,88,Portugal Benfica,Uruguay,30,8 June 1984,FALSE
+?,DF,Diego God?n,76,Spain Atl?tico Madrid,Uruguay,28,16 February 1986,FALSE
+?,DF,Mart?n C?ceres,55,Italy Juventus,Uruguay,27,7 April 1987,FALSE
+?,DF,Jorge Fucile,41,Portugal Porto,Uruguay,29,19 November 1984,FALSE
+?,DF,Sebasti?n Coates,13,Uruguay Nacional,Uruguay,23,7 October 1990,TRUE
+?,DF,Jos? Mar?a Gim?nez,4,Spain Atl?tico Madrid,Uruguay,19,20 January 1995,FALSE
+?,DF,Alejandro Silva,2,Argentina Lan?s,Uruguay,24,4 September 1989,FALSE
+?,MF,Diego P?rez,88,Italy Bologna,Uruguay,34,18 May 1980,FALSE
+?,MF,Cristian Rodr?guez,71,Spain Atl?tico Madrid,Uruguay,28,30 September 1985,FALSE
+?,MF,Walter Gargano,61,Italy Parma,Uruguay,29,23 July 1984,FALSE
+?,MF,?lvaro Pereira,55,Brazil S?o Paulo,Uruguay,28,28 November 1985,FALSE
+?,MF,Sebasti?n Eguren,54,Brazil Palmeiras,Uruguay,33,8 January 1981,FALSE
+?,MF,Egidio Ar?valo R?os,53,Mexico Morelia,Uruguay,32,1 January 1982,FALSE
+?,MF,?lvaro Gonz?lez,42,Italy Lazio,Uruguay,29,29 October 1984,FALSE
+?,MF,Gast?n Ram?rez,27,England Southampton,Uruguay,23,2 December 1990,FALSE
+?,MF,Nicol?s Lodeiro,25,Brazil Botafogo,Uruguay,25,21 March 1989,FALSE
+?,FW,Diego Forl?n,108,Japan Cerezo Osaka,Uruguay,35,19 May 1979,FALSE
+?,FW,Luis Su?rez,77,England Liverpool,Uruguay,27,24 January 1987,FALSE
+?,FW,Edinson Cavani,60,France Paris Saint-Germain,Uruguay,27,14 February 1987,FALSE
+?,GK,M?ximo Banguera,23,Ecuador Barcelona,Ecuador,28,16 December 1985,TRUE
+?,GK,Alexander Dom?nguez,18,Ecuador LDU Quito,Ecuador,27,5 June 1987,TRUE
+?,GK,Adri?n Bone,3,Ecuador El Nacional,Ecuador,25,8 September 1988,TRUE
+?,DF,Walter Ayov?,88,Mexico Pachuca,Ecuador,34,11 August 1979,FALSE
+?,DF,Jorge Guagua,57,Ecuador Emelec,Ecuador,32,28 September 1981,TRUE
+?,DF,Juan Carlos Paredes,36,Ecuador Barcelona,Ecuador,26,8 July 1987,TRUE
+?,DF,Frickson Erazo,35,Brazil Flamengo,Ecuador,26,5 May 1988,FALSE
+?,DF,Gabriel Achilier,21,Ecuador Emelec,Ecuador,29,24 March 1985,TRUE
+?,DF,?scar Bag??,21,Ecuador Emelec,Ecuador,31,10 December 1982,TRUE
+?,DF,Cristian Ram?rez,2,Germany Fortuna D?sseldorf,Ecuador,19,15 August 1994,FALSE
+?,DF,John Narv?ez,0,Ecuador Emelec,Ecuador,23,12 June 1991,TRUE
+?,MF,?dison M?ndez,108,Colombia Santa Fe,Ecuador,35,15 March 1979,FALSE
+?,MF,Segundo Castillo,80,Saudi Arabia Al-Hilal,Ecuador,32,15 May 1982,FALSE
+?,MF,Antonio Valencia,69,England Manchester United,Ecuador,28,4 August 1985,FALSE
+?,MF,Luis Saritama,48,Ecuador Barcelona,Ecuador,30,20 October 1983,TRUE
+?,MF,Christian Noboa,41,Russia Dynamo Moscow,Ecuador,29,9 April 1985,FALSE
+?,MF,Jefferson Montero,38,Mexico Morelia,Ecuador,24,1 September 1989,FALSE
+?,MF,Jo?o Rojas,28,Mexico Cruz Azul,Ecuador,24,14 June 1989,FALSE
+?,MF,Michael Arroyo,20,Mexico Atlante,Ecuador,27,23 April 1987,FALSE
+?,MF,Oswaldo Minda,18,United States Chivas USA,Ecuador,30, 26 July 1983,FALSE
+?,MF,Renato Ibarra,17,Netherlands Vitesse,Ecuador,23,20 January 1991,FALSE
+?,MF,Pedro Qui??nez,10,Ecuador Emelec,Ecuador,28,4 March 1986,TRUE
+?,MF,Fidel Mart?nez,7,Mexico Tijuana,Ecuador,24,15 February 1990,FALSE
+?,GK,Hugo Lloris (captain),55,England Tottenham Hotspur,France,27,26 December 1986,FALSE
+?,GK,Micka?l Landreau,11,France Bastia,France,35,14 May 1979,TRUE
+?,GK,St?phane Ruffier[44],2,France Saint-?tienne,France,27, 27 September 1986,TRUE
+?,DF,Patrice Evra,55,England Manchester United,France,33,15 May 1981,FALSE
+?,DF,Bacary Sagna,39,England Arsenal,France,31,14 February 1983,FALSE
+?,DF,Mathieu Debuchy,20,England Newcastle United,France,28,28 July 1985,FALSE
+?,DF,Mamadou Sakho,17,England Liverpool,France,24,13 February 1990,FALSE
+?,DF,Laurent Koscielny,16,England Arsenal,France,28,10 September 1985,FALSE
+?,DF,Rapha?l Varane,5,Spain Real Madrid,France,21,25 April 1993,FALSE
+?,DF,Lucas Digne,2,France Paris Saint-Germain,France,20,20 July 1993,TRUE
+?,DF,Eliaquim Mangala,2,Portugal Porto,France,23,13 February 1991,FALSE
+?,MF,Franck Rib?ry,81,Germany Bayern Munich,France,31,7 April 1983,FALSE
+?,MF,Mathieu Valbuena,32,France Marseille,France,29,28 September 1984,TRUE
+?,MF,Yohan Cabaye,28,France Paris Saint-Germain,France,28,14 January 1986,TRUE
+?,MF,Blaise Matuidi,21,France Paris Saint-Germain,France,27,9 April 1987,TRUE
+?,MF,Moussa Sissoko,15,England Newcastle United,France,24,16 August 1989,FALSE
+?,MF,Rio Mavuba,10,France Lille,France,30,8 March 1984,TRUE
+?,MF,Paul Pogba,9,Italy Juventus,France,21,15 March 1993,FALSE
+?,MF,Cl?ment Grenier,4,France Lyon,France,23,7 January 1991,TRUE
+?,MF,Antoine Griezmann,2,Spain Real Sociedad,France,23,21 March 1991,FALSE
+?,FW,Karim Benzema,65,Spain Real Madrid,France,26,19 December 1987,FALSE
+?,FW,Olivier Giroud,28,England Arsenal,France,27,30 September 1986,FALSE
+?,FW,Lo?c R?my,23,England Newcastle United,France,27,2 January 1987,FALSE
+?,GK,Noel Valladares (captain),120,Honduras Olimpia,Honduras,37,3 May 1977,TRUE
+?,GK,Donis Escober,25,Honduras Olimpia,Honduras,34,3 February 1980,TRUE
+?,GK,Luis L?pez,0,Honduras Real Espa?a,Honduras,20,13 September 1993,TRUE
+?,DF,Maynor Figueroa,102,England Hull City,Honduras,31,2 May 1983,FALSE
+?,DF,V?ctor Bern?rdez,75,United States San Jose Earthquakes,Honduras,32,24 May 1982,FALSE
+?,DF,Emilio Izaguirre,66,Scotland Celtic,Honduras,28,10 May 1986,FALSE
+?,DF,Osman Ch?vez,52,China Qingdao Jonoon,Honduras,29,29 July 1984,FALSE
+?,DF,Juan Carlos Garc?a,31,England Wigan Athletic,Honduras,26,8 March 1988,FALSE
+?,DF,Brayan Beckeles,20,Honduras Olimpia,Honduras,28,28 November 1985,TRUE
+?,DF,Juan Pablo Montes,9,Honduras Motagua,Honduras,28,26 October 1985,TRUE
+?,MF,Wilson Palacios,92,England Stoke City,Honduras,29,29 July 1984,FALSE
+?,MF,?scar Garc?a,92,United States Houston Dynamo,Honduras,29,4 September 1984,FALSE
+?,MF,Jorge Claros,46,Honduras Motagua,Honduras,28,8 January 1986,TRUE
+?,MF,Marvin Ch?vez,39,United States Chivas USA,Honduras,30,3 November 1983,FALSE
+?,MF,Roger Espinoza,39,England Wigan Athletic,Honduras,27,25 October 1986,FALSE
+?,MF,Mario Mart?nez,34,Honduras Real Espa?a,Honduras,24,30 July 1989,TRUE
+?,MF,Arnold Peralta,20,Scotland Rangers,Honduras,25,29 March 1989,FALSE
+?,MF,Luis Garrido,18,Honduras Olimpia,Honduras,23,5 November 1990,TRUE
+?,MF,Andy Najar,15,Belgium Anderlecht,Honduras,21,16 March 1993,FALSE
+?,FW,Carlo Costly,68,Honduras Real Espa?a,Honduras,31,18 July 1982,TRUE
+?,FW,Jerry Bengtson,41,United States New England Revolution,Honduras,27,8 April 1987,FALSE
+?,FW,Jerry Palacios,21,Costa Rica Alajuelense,Honduras,32,1 November 1981,FALSE
+?,FW,Rony Mart?nez,10,Honduras Real Sociedad,Honduras,25,16 October 1988,TRUE
+1,GK,Diego Benaglio,55,Germany VfL Wolfsburg,Switzerland,30,8 September 1983,FALSE
+2,DF,Stephan Lichtsteiner,61,Italy Juventus,Switzerland,30,16 January 1984,FALSE
+3,DF,Reto Ziegler,34,Italy Sassuolo,Switzerland,28,16 January 1986,FALSE
+4,DF,Philippe Senderos,52,Spain Valencia,Switzerland,29,14 February 1985,FALSE
+5,DF,Steve von Bergen,40,Switzerland Young Boys,Switzerland,31,10 June 1983,TRUE
+6,DF,Michael Lang,5,Switzerland Grasshopper,Switzerland,23,8 February 1991,TRUE
+7,MF,Tranquillo Barnetta,73,Germany Eintracht Frankfurt,Switzerland,29,22 May 1985,FALSE
+8,MF,G?khan Inler (captain),71,Italy Napoli,Switzerland,29,27 June 1984,FALSE
+9,FW,Haris Seferovic,9,Spain Real Sociedad,Switzerland,22,22 February 1992,FALSE
+10,MF,Granit Xhaka,24,Germany Borussia M?nchengladbach,Switzerland,21,27 September 1992,FALSE
+11,MF,Valon Behrami,46,Italy Napoli,Switzerland,29,19 April 1985,FALSE
+12,GK,Yann Sommer,5,Switzerland Basel,Switzerland,25,17 December 1988,TRUE
+13,DF,Ricardo Rodr?guez,19,Germany VfL Wolfsburg,Switzerland,21,25 August 1992,FALSE
+14,MF,Valentin Stocker,22,Switzerland Basel,Switzerland,25,12 April 1989,TRUE
+15,MF,Blerim D?emaili,32,Italy Napoli,Switzerland,28,12 April 1986,FALSE
+16,MF,Gelson Fernandes,46,Germany SC Freiburg,Switzerland,27,2 September 1986,FALSE
+17,FW,Mario Gavranovic,10,Switzerland Z?rich,Switzerland,24,24 November 1989,TRUE
+18,FW,Admir Mehmedi,19,Germany SC Freiburg,Switzerland,23,16 March 1991,FALSE
+19,FW,Josip Drmic,5,Germany 1. FC N?rnberg,Switzerland,21,8 August 1992,FALSE
+20,DF,Johan Djourou,43,Germany Hamburger SV,Switzerland,27,18 January 1987,FALSE
+21,GK,Roman B?rki,0,Switzerland Grasshopper,Switzerland,23,14 November 1990,TRUE
+22,DF,Fabian Sch?r,5,Switzerland Basel,Switzerland,22,20 December 1991,TRUE
+23,MF,Xherdan Shaqiri,31,Germany Bayern Munich,Switzerland,22,10 October 1991,FALSE
+?,GK,Sergio Romero,45,France Monaco,Argentina,27,22 February 1987,FALSE
+?,GK,Mariano And?jar,10,Italy Catania,Argentina,30,30 July 1983,FALSE
+?,GK,Agust?n Ori?n,3,Argentina Boca Juniors,Argentina,32,26 July 1981,TRUE
+?,DF,Mart?n Demichelis,37,England Manchester City,Argentina,33,20 December 1980,FALSE
+?,DF,Pablo Zabaleta,36,England Manchester City,Argentina,29,16 January 1985,FALSE
+?,DF,Federico Fern?ndez,24,Italy Napoli,Argentina,25,21 February 1989,FALSE
+?,DF,Marcos Rojo,20,Portugal Sporting CP,Argentina,24,20 March 1990,FALSE
+?,DF,Ezequiel Garay,18,Portugal Benfica,Argentina,27,10 October 1986,FALSE
+?,DF,Nicol?s Otamendi,16,Brazil Atl?tico Mineiro,Argentina,26,12 February 1988,FALSE
+?,DF,Hugo Campagnaro,13,Italy Internazionale,Argentina,33,27 June 1980,FALSE
+?,DF,Jos? Mar?a Basanta,8,Mexico Monterrey,Argentina,30,3 April 1984,FALSE
+?,MF,Javier Mascherano,96,Spain Barcelona,Argentina,30,8 June 1984,FALSE
+?,MF,Maxi Rodr?guez,53,Argentina Newell's Old Boys,Argentina,33,2 January 1981,TRUE
+?,MF,Fernando Gago,47,Argentina Boca Juniors,Argentina,28,10 April 1986,TRUE
+?,MF,?ngel di Mar?a,45,Spain Real Madrid,Argentina,26,14 February 1988,FALSE
+?,MF,?ver Banega,24,Argentina Newell's Old Boys,Argentina,25,29 June 1988,TRUE
+?,MF,Jos? Ernesto Sosa,19,Spain Atl?tico Madrid,Argentina,28,19 June 1985,FALSE
+?,MF,Lucas Biglia,16,Italy Lazio,Argentina,28,30 January 1986,FALSE
+-,MF,Augusto Fern?ndez,7,Spain Celta Vigo,Argentina,28,10 April 1986,FALSE
+?,MF,Ricardo ?lvarez,5,Italy Internazionale,Argentina,26,12 April 1988,FALSE
+?,MF,Enzo P?rez,5,Portugal Benfica,Argentina,28,22 February 1986,FALSE
+?,FW,Lionel Messi (Captain),84,Spain Barcelona,Argentina,26,24 June 1987,FALSE
+?,FW,Sergio Ag?ero,50,England Manchester City,Argentina,26,2 June 1988,FALSE
+?,GK,Asmir Begovic,28,England Stoke City,Bosnia and Herzegovina,26,20 June 1987,FALSE
+?,GK,Asmir Avdukic,3,Bosnia and Herzegovina Borac Banja Luka,Bosnia and Herzegovina,33,13 May 1981,FALSE
+?,GK,Jasmin Fejzic,0,Germany VfR Aalen,Bosnia and Herzegovina,28,15 May 1986,FALSE
+?,GK,Dejan Bandovic,0,Bosnia and Herzegovina Sarajevo,Bosnia and Herzegovina,31,11 June 1983,FALSE
+?,DF,Emir Spahic,72,Germany Bayer Leverkusen,Bosnia and Herzegovina,33,18 August 1980,FALSE
+?,DF,Mensur Mujd?a,22,Germany SC Freiburg,Bosnia and Herzegovina,30,28 March 1984,FALSE
+?,DF,Avdija Vr?ajevic,12,Croatia Hajduk Split,Bosnia and Herzegovina,28,6 March 1986,FALSE
+?,DF,Ognjen Vranje?,11,Turkey Elazigspor,Bosnia and Herzegovina,24,24 October 1989,FALSE
+?,DF,Ermin Bicakcic,7,Germany Eintracht Braunschweig,Bosnia and Herzegovina,24,24 January 1990,FALSE
+?,DF,Ervin Zukanovic,6,Belgium Gent,Bosnia and Herzegovina,27,11 February 1987,FALSE
+?,DF,Toni ?unjic,5,Ukraine Zorya Luhansk,Bosnia and Herzegovina,25,15 December 1988,FALSE
+?,DF,Sead Kola?inac,2,Germany Schalke 04,Bosnia and Herzegovina,20,20 June 1993,FALSE
+?,MF,Zvjezdan Misimovic,80,China Guizhou Renhe,Bosnia and Herzegovina,32,5 June 1982,FALSE
+?,MF,Miralem Pjanic,46,Italy Roma,Bosnia and Herzegovina,24,2 April 1990,FALSE
+?,MF,Senijad Ibricic,41,Turkey Kayseri Erciyesspor,Bosnia and Herzegovina,28,26 September 1985,FALSE
+?,MF,Sejad Salihovic,40,Germany 1899 Hoffenheim,Bosnia and Herzegovina,29,8 October 1984,FALSE
+?,MF,Haris Medunjanin,34,Turkey Gaziantepspor,Bosnia and Herzegovina,29,8 March 1985,FALSE
+?,MF,Senad Lulic,33,Italy Lazio,Bosnia and Herzegovina,28,18 January 1986,FALSE
+?,MF,Adnan Zahirovic,20,Germany VfL Bochum,Bosnia and Herzegovina,24,23 March 1990,FALSE
+?,MF,Miroslav Stevanovic,10,Spain Alav?s,Bosnia and Herzegovina,23,29 July 1990,FALSE
+?,MF,Muhamed Be?ic,7,Hungary Ferencv?ros,Bosnia and Herzegovina,21,10 September 1992,FALSE
+?,MF,Izet Hajrovic,5,Turkey Galatasaray,Bosnia and Herzegovina,22,4 August 1991,FALSE
+?,MF,Zoran Kvr?ic,3,Croatia Rijeka,Bosnia and Herzegovina,24,06 July 1989,FALSE
+?,GK,Rahman Ahmadi,11,Iran Sepahan,Iran,33,30 July 1980,TRUE
+?,GK,Alireza Haghighi,5,Portugal Sporting Covilh?,Iran,26,2 May 1988,FALSE
+?,GK,Daniel Davari,3,Germany Eintracht Braunschweig,Iran,26,6 January 1988,FALSE
+?,GK,Sosha Makani,2,Iran Foolad,Iran,27,18 November 1986,TRUE
+?,GK,Alireza Beiranvand,0,Iran Naft Tehran,Iran,21, 22 September 1992,TRUE
+?,DF,Jalal Hosseini,84,Iran Persepolis,Iran,32,3 February 1982,TRUE
+?,DF,Ehsan Hajsafi,60,Iran Sepahan,Iran,24,25 February 1990,TRUE
+?,DF,Khosro Heydari,48,Iran Esteghlal,Iran,30,14 September 1983,TRUE
+?,DF,Pejman Montazeri,22,Qatar Umm Salal,Iran,30,6 September 1983,FALSE
+?,DF,Hossein Mahini,20,Iran Persepolis,Iran,27,16 September 1986,TRUE
+?,DF,Mehrdad Pouladi,19,Iran Persepolis,Iran,27,26 February 1987,TRUE
+?,DF,Hashem Beikzadeh,17,Iran Esteghlal,Iran,30,22 January 1984,TRUE
+?,DF,Amir Hossein Sadeghi,16,Iran Esteghlal,Iran,32,6 September 1981,TRUE
+?,DF,Mohammad Reza Khanzadeh,6,Iran Zob Ahan,Iran,23,11 May 1991,TRUE
+?,DF,Ahmad Alenemeh,5,Iran Naft Tehran,Iran,31,10 October 1982,TRUE
+?,DF,Steven Beitashour,5,Canada Vancouver Whitecaps,Iran,27,1 February 1987,FALSE
+?,MF,Javad Nekounam,138,Kuwait Al-Kuwait,Iran,33,7 October 1980,FALSE
+?,MF,Andranik Teymourian,78,Iran Esteghlal,Iran,31,6 March 1983,TRUE
+?,MF,Mohammad Reza Khalatbari,59,Iran Persepolis,Iran,29,14 September 1984,TRUE
+?,MF,Masoud Shojaei,49,Spain Las Palmas,Iran,30,9 June 1984,FALSE
+?,MF,Ghasem Haddadifar,15,Iran Zob Ahan,Iran,30,12 July 1983,TRUE
+?,MF,Ashkan Dejagah,12,England Fulham,Iran,27,5 July 1986,FALSE
+?,MF,Alireza Jahanbakhsh,6,Netherlands NEC,Iran,20,11 August 1993,FALSE
+?,GK,Vincent Enyeama,89,France Lille,Nigeria,31,29 August 1982,FALSE
+?,GK,Austin Ejide,32,Israel Hapoel Be'er Sheva,Nigeria,30,8 April 1984,FALSE
+?,GK,Chigozie Agbim,11,Nigeria Gombe United,Nigeria,29,28 November 1984,TRUE
+?,GK,Daniel Akpeyi,0,Nigeria Warri Wolves,Nigeria,27,3 August 1986,TRUE
+?,DF,Joseph Yobo,95,England Norwich City,Nigeria,33,6 September 1980,FALSE
+?,DF,Elderson,41,France Monaco,Nigeria,26,20 January 1988,FALSE
+?,DF,Efe Ambrose,35,Scotland Celtic,Nigeria,25,18 October 1988,FALSE
+?,DF,Godfrey Oboabona,34,Turkey ?aykur Rizespor,Nigeria,23,16 August 1990,FALSE
+?,DF,Azubuike Egwuekwe,32,Nigeria Warri Wolves,Nigeria,24,16 July 1989,TRUE
+?,DF,Kenneth Omeruo,16,England Middlesbrough,Nigeria,20,17 October 1993,FALSE
+?,DF,Juwon Oshaniwa,10,Israel Ashdod,Nigeria,23,14 September 1990,FALSE
+?,DF,Kunle Odunlami,9,Nigeria Sunshine Stars,Nigeria,24,5 March 1990,TRUE
+?,MF,John Obi Mikel,58,England Chelsea,Nigeria,27,22 April 1987,FALSE
+?,MF,Ahmed Musa,34,Russia CSKA Moscow,Nigeria,21,14 October 1992,FALSE
+?,MF,Sunday Mba,21,France CA Bastia,Nigeria,25,28 November 1988,FALSE
+?,MF,Ejike Uzoenyi,21,Nigeria Enugu Rangers,Nigeria,26,23 March 1988,TRUE
+?,MF,Ogenyi Onazi,19,Italy Lazio,Nigeria,21,25 December 1992,FALSE
+?,MF,Victor Moses,19,England Liverpool,Nigeria,23,12 December 1990,FALSE
+?,MF,Nnamdi Oduamadi,13,Italy Brescia,Nigeria,23,17 October 1990,FALSE
+?,MF,Joel Obi,12,Italy Parma,Nigeria,23,22 May 1991,FALSE
+?,MF,Nosa Igiebor,12,Spain Real Betis,Nigeria,23,9 November 1990,FALSE
+?,MF,Reuben Gabriel,11,Belgium Waasland-Beveren,Nigeria,23,25 September 1990,FALSE
+?,MF,Ramon Azeez,1,Spain Almer?a,Nigeria,21,12 December 1992,FALSE
+?,GK,Manuel Neuer,45,Germany Bayern Munich,Germany,28,27 March 1986,TRUE
+?,GK,Ron-Robert Zieler,2,Germany Hannover 96,Germany,25,12 February 1989,TRUE
+?,GK,Roman Weidenfeller,1,Germany Borussia Dortmund,Germany,33,6 August 1980,TRUE
+?,DF,Philipp Lahm,105,Germany Bayern Munich,Germany,30,11 November 1983,TRUE
+?,DF,Per Mertesacker,96,England Arsenal,Germany,29,29 September 1984,FALSE
+?,DF,J?r?me Boateng,37,Germany Bayern Munich,Germany,25,3 September 1988,TRUE
+?,DF,Mats Hummels,28,Germany Borussia Dortmund,Germany,25,16 December 1988,TRUE
+?,DF,Benedikt H?wedes,19,Germany Schalke 04,Germany,26,29 February 1988,TRUE
+?,DF,Marcel Schmelzer,16,Germany Borussia Dortmund,Germany,26,22 January 1988,TRUE
+?,DF,Kevin Gro?kreutz,4,Germany Borussia Dortmund,Germany,25,19 July 1988,TRUE
+?,DF,Matthias Ginter,2,Germany SC Freiburg,Germany,20,19 January 1994,TRUE
+?,DF,Shkodran Mustafi,1,Italy Sampdoria,Germany,22,17 April 1992,FALSE
+?,DF,Erik Durm,0,Germany Borussia Dortmund,Germany,22,12 May 1992,TRUE
+?,MF,Bastian Schweinsteiger,101,Germany Bayern Munich,Germany,29,1 August 1984,TRUE
+?,MF,Mesut ?zil,53,England Arsenal,Germany,25,15 October 1988,FALSE
+?,MF,Sami Khedira,44,Spain Real Madrid,Germany,27,4 April 1987,FALSE
+?,MF,Toni Kroos,42,Germany Bayern Munich,Germany,24,4 January 1990,TRUE
+?,MF,Mario G?tze,27,Germany Bayern Munich,Germany,22,3 June 1992,TRUE
+?,MF,Julian Draxler,11,Germany Schalke 04,Germany,20,20 September 1993,TRUE
+?,MF,Christoph Kramer,1,Germany Borussia M?nchengladbach,Germany,23,12 February 1991,TRUE
+?,FW,Miroslav Klose,131,Italy Lazio,Germany,36,9 June 1978,FALSE
+?,FW,Lukas Podolski,112,England Arsenal,Germany,29,4 June 1985,FALSE
+?,FW,Andr? Sch?rrle,31,England Chelsea,Germany,23,6 November 1990,FALSE
+?,GK,Adam Kwarasey,20,Norway Str?msgodset,Ghana,26,12 December 1987,FALSE
+?,GK,Fatau Dauda,17,South Africa Orlando Pirates,Ghana,29,6 April 1985,FALSE
+?,GK,Steven Adams,6,Ghana Aduana Stars,Ghana,24,28 September 1989,TRUE
+?,DF,Samuel Inkoom,45,Greece Platanias,Ghana,25,1 June 1989,FALSE
+?,DF,Harrison Afful,39,Tunisia Esp?rance,Ghana,27,24 June 1986,FALSE
+?,DF,John Boye,29,France Rennes,Ghana,27,23 April 1987,FALSE
+?,DF,Jonathan Mensah,25,France ?vian,Ghana,23,13 July 1990,FALSE
+?,DF,Daniel Opare,16,Belgium Standard Li?ge,Ghana,23,18 October 1990,FALSE
+?,DF,Jerry Akaminko,8,Turkey Eskisehirspor,Ghana,26,2 May 1988,FALSE
+?,DF,Rashid Sumaila,5,South Africa Mamelodi Sundowns,Ghana,21,18 December 1992,FALSE
+?,DF,Jeff Schlupp,1,England Leicester City,Ghana,21,23 December 1992,FALSE
+?,MF,Sulley Muntari,81,Italy Milan,Ghana,29,27 August 1984,FALSE
+?,MF,Kwadwo Asamoah,60,Italy Juventus,Ghana,25,9 December 1988,FALSE
+?,MF,Michael Essien,56,Italy Milan,Ghana,31,3 December 1982,FALSE
+?,MF,Emmanuel Agyemang-Badu,48,Italy Udinese,Ghana,23,2 December 1990,FALSE
+?,MF,Andr? Ayew,47,France Marseille,Ghana,24,17 December 1989,FALSE
+?,MF,Christian Atsu,21,Netherlands Vitesse,Ghana,22,10 January 1992,FALSE
+?,MF,Wakaso Mubarak,16,Russia Rubin Kazan,Ghana,23,25 July 1990,FALSE
+?,MF,Mohammed Rabiu,15,Russia Kuban Krasnodar,Ghana,24,31 December 1989,FALSE
+?,MF,Albert Adomah,13,England Middlesbrough,Ghana,26,13 December 1987,FALSE
+?,MF,Kevin-Prince Boateng,11,Germany Schalke 04,Ghana,27,6 March 1987,FALSE
+?,MF,Afriyie Acquah,3,Italy Parma,Ghana,22,5 January 1992,FALSE
+?,FW,Asamoah Gyan,78,United Arab Emirates Al-Ain,Ghana,28,22 November 1985,FALSE
+1,GK,Eduardo,32,Portugal Braga,Portugal,31,19 September 1982,TRUE
+2,DF,Bruno Alves,70,Turkey Fenerbah?e,Portugal,32,27 November 1981,FALSE
+3,DF,Pepe,57,Spain Real Madrid,Portugal,31,26 February 1983,FALSE
+4,MF,Miguel Veloso,46,Ukraine Dynamo Kyiv,Portugal,28,11 May 1986,FALSE
+5,DF,F?bio Coentr?o,43,Spain Real Madrid,Portugal,26,11 March 1988,FALSE
+6,MF,William Carvalho,2,Portugal Sporting CP,Portugal,22,7 April 1992,TRUE
+7,FW,Cristiano Ronaldo (captain),110,Spain Real Madrid,Portugal,29,05 February 1985,FALSE
+8,MF,Jo?o Moutinho,66,France Monaco,Portugal,27,8 September 1986,FALSE
+9,FW,Hugo Almeida,53,Turkey Besiktas,Portugal,30,23 May 1984,FALSE
+10,MF,Vieirinha,6,Germany VfL Wolfsburg,Portugal,28,24 January 1986,FALSE
+11,FW,?der,6,Portugal Braga,Portugal,26,22 December 1987,TRUE
+12,GK,Rui Patr?cio,29,Portugal Sporting CP,Portugal,26,15 February 1988,TRUE
+13,DF,Ricardo Costa,16,Spain Valencia,Portugal,33,16 May 1981,FALSE
+14,DF,Lu?s Neto,6,Russia Zenit Saint Petersburg,Portugal,26,26 May 1988,FALSE
+15,MF,Rafa Silva,1,Portugal Braga,Portugal,21,17 May 1993,TRUE
+16,MF,Raul Meireles,73,Turkey Fenerbah?e,Portugal,31,17 March 1983,FALSE
+17,MF,Nani,72,England Manchester United,Portugal,27,17 November 1986,FALSE
+18,MF,Silvestre Varela,21,Portugal Porto,Portugal,29,2 February 1985,TRUE
+19,DF,Andr? Almeida,2,Portugal Benfica,Portugal,23,10 September 1990,TRUE
+20,MF,R?ben Amorim,10,Portugal Benfica,Portugal,29,27 January 1985,TRUE
+21,DF,Jo?o Pereira,34,Spain Valencia,Portugal,30,25 February 1984,FALSE
+22,GK,Beto,6,Spain Sevilla,Portugal,32,1 May 1982,FALSE
+23,FW,H?lder Postiga,66,Italy Lazio,Portugal,31,2 August 1982,FALSE
+1,GK,Tim Howard,98,England Everton,United States,35,6 March 1979,FALSE
+2,DF,DeAndre Yedlin,3,United States Seattle Sounders FC,United States,20,9 July 1993,TRUE
+3,DF,Omar Gonzalez,19,United States Los Angeles Galaxy,United States,25,11 October 1988,TRUE
+4,MF,Michael Bradley,84,Canada Toronto FC,United States,26,31 July 1987,FALSE
+5,DF,Matt Besler,15,United States Sporting Kansas City,United States,27,11 February 1987,TRUE
+6,DF,John Brooks,3,Germany Hertha BSC,United States,21,28 January 1993,FALSE
+7,DF,DaMarcus Beasley,115,Mexico Puebla,United States,32,24 May 1982,FALSE
+8,FW,Clint Dempsey,103,United States Seattle Sounders FC,United States,31,9 March 1983,TRUE
+9,FW,Aron J?hannsson,8,Netherlands AZ,United States,23,10 November 1990,FALSE
+10,MF,Mikkel Diskerud,18,Norway Rosenborg,United States,23,2 October 1990,FALSE
+11,MF,Alejandro Bedoya,27,France Nantes,United States,27,29 April 1987,FALSE
+12,GK,Brad Guzan,24,England Aston Villa,United States,29,9 September 1984,FALSE
+13,MF,Jermaine Jones,40,Turkey Besiktas,United States,32,3 November 1981,FALSE
+14,MF,Brad Davis,15,United States Houston Dynamo,United States,32,8 November 1981,TRUE
+15,MF,Kyle Beckerman,35,United States Real Salt Lake,United States,32,23 April 1982,TRUE
+16,MF,Julian Green,1,Germany Bayern Munich,United States,19,6 June 1995,FALSE
+17,FW,Jozy Altidore,68,England Sunderland,United States,24,6 November 1989,FALSE
+18,FW,Chris Wondolowski,20,United States San Jose Earthquakes,United States,31,28 January 1983,TRUE
+19,MF,Graham Zusi,21,United States Sporting Kansas City,United States,27,18 August 1986,TRUE
+20,DF,Geoff Cameron,25,England Stoke City,United States,28,11 July 1985,FALSE
+21,DF,Timothy Chandler,11,Germany 1. FC N?rnberg,United States,24,29 March 1990,FALSE
+22,GK,Nick Rimando,14,United States Real Salt Lake,United States,34,17 June 1979,TRUE
+23,DF,Fabian Johnson,20,Germany 1899 Hoffenheim,United States,26,11 December 1987,FALSE
+?,GK,Ra?s M'Bolhi,27,Bulgaria CSKA Sofia,Algeria,28,25 April 1986,FALSE
+?,GK,Mohamed Zemmamouche,6,Algeria USM Alger,Algeria,29,19 March 1985,TRUE
+?,GK,Azzedine Doukha,5,Algeria USM El Harrach,Algeria,27,5 August 1986,TRUE
+?,GK,C?dric Si Mohamed,1,Algeria CS Constantine,Algeria,29,9 January 1985,TRUE
+?,DF,Madjid Bougherra,61,Qatar Lekhwiya,Algeria,31,7 October 1982,FALSE
+?,DF,Rafik Halliche,27,Portugal Acad?mica,Algeria,27,2 September 1986,FALSE
+?,DF,Djamel Mesbah,25,Italy Livorno,Algeria,29,9 October 1984,FALSE
+?,DF,Carl Medjani,24,France Valenciennes,Algeria,29,15 May 1985,FALSE
+?,DF,Essa?d Belkalem,12,England Watford,Algeria,25,1 January 1989,FALSE
+?,DF,Liassine Cadamuro-Benta?ba,6,Spain Mallorca,Algeria,26,5 March 1988,FALSE
+?,DF,Faouzi Ghoulam,5,Italy Napoli,Algeria,23,1 February 1991,FALSE
+?,DF,Nacereddine Khoualed,4,Algeria USM Alger,Algeria,28,16 April 1986,TRUE
+?,DF,A?ssa Mandi,1,France Reims,Algeria,22,22 October 1991,FALSE
+?,MF,Medhi Lacen,28,Spain Getafe,Algeria,30,15 May 1984,FALSE
+?,MF,Adl?ne Guedioura,27,England Crystal Palace,Algeria,28,12 November 1985,FALSE
+?,MF,Hassan Yebda,24,Italy Udinese,Algeria,30,14 May 1984,FALSE
+?,MF,Foued Kadir,23,France Rennes,Algeria,30,5 December 1983,FALSE
+?,MF,Mehdi Mostefa,22,France Ajaccio,Algeria,30,30 August 1983,FALSE
+?,MF,Sofiane Feghouli,17,Spain Valencia,Algeria,24,26 December 1989,FALSE
+?,MF,Ryad Boudebouz,16,France Bastia,Algeria,24,19 February 1990,FALSE
+?,MF,Saphir Ta?der,9,Italy Internazionale,Algeria,22,29 February 1992,FALSE
+?,MF,Abdelmoumene Djabou,6,Tunisia Club Africain,Algeria,27,31 January 1987,FALSE
+?,MF,Yacine Brahimi,4,Spain Granada,Algeria,24,8 February 1990,FALSE
+1,GK,Thibaut Courtois,15,Spain Atl?tico Madrid,Belgium,22,11 May 1992,FALSE
+2,DF,Toby Alderweireld,33,Spain Atl?tico Madrid,Belgium,25,2 March 1989,FALSE
+3,DF,Thomas Vermaelen,48,England Arsenal,Belgium,28,14 November 1985,FALSE
+4,DF,Vincent Kompany,58,England Manchester City,Belgium,28,10 April 1986,FALSE
+5,DF,Jan Vertonghen,56,England Tottenham Hotspur,Belgium,27,24 April 1987,FALSE
+6,MF,Axel Witsel,46,Russia Zenit Saint Petersburg,Belgium,25,12 January 1989,FALSE
+7,MF,Kevin De Bruyne,21,Germany VfL Wolfsburg,Belgium,22,28 June 1991,FALSE
+8,MF,Marouane Fellaini,49,England Manchester United,Belgium,26,22 November 1987,FALSE
+9,FW,Romelu Lukaku,28,England Everton,Belgium,21,13 May 1993,FALSE
+10,MF,Eden Hazard,44,England Chelsea,Belgium,23,7 January 1991,FALSE
+11,MF,Kevin Mirallas,44,England Everton,Belgium,26,5 October 1987,FALSE
+12,GK,Simon Mignolet,14,England Liverpool,Belgium,25, 6 August 1988,FALSE
+13,GK,Koen Casteels,0,Germany 1899 Hoffenheim,Belgium,21, 25 June 1992,FALSE
+14,FW,Dries Mertens,23,Italy Napoli,Belgium,27,6 May 1987,FALSE
+15,DF,Daniel Van Buyten,78,Germany Bayern Munich,Belgium,36,7 February 1978,FALSE
+16,MF,Steven Defour,43,Portugal Porto,Belgium,26,15 April 1988,FALSE
+17,FW,Divock Origi,1,France Lille,Belgium,19,18 April 1995,FALSE
+18,DF,Nicolas Lombaerts,26,Russia Zenit Saint Petersburg,Belgium,29,20 March 1985,FALSE
+19,MF,Mousa Demb?l?,55,England Tottenham Hotspur,Belgium,26,16 July 1987,FALSE
+20,MF,Adnan Januzaj,1,England Manchester United,Belgium,19,5 February 1995,FALSE
+21,DF,Anthony Vanden Borre,25,Belgium Anderlecht,Belgium,26,24 October 1987,TRUE
+22,MF,Nacer Chadli,19,England Tottenham Hotspur,Belgium,24,2 October 1989,FALSE
+23,DF,Laurent Ciman,8,Belgium Standard Li?ge,Belgium,28,5 August 1985,TRUE
+?,GK,Igor Akinfeev,67,Russia CSKA Moscow,Russia,28,8 April 1986,TRUE
+?,GK,Yuri Lodygin,2,Russia Zenit Saint Petersburg,Russia,24,26 May 1990,TRUE
+?,GK,Sergey Ryzhikov,1,Russia Rubin Kazan,Russia,33,19 September 1980,TRUE
+?,DF,Sergei Ignashevich,95,Russia CSKA Moscow,Russia,34,14 July 1979,TRUE
+?,DF,Vasili Berezutski,76,Russia CSKA Moscow,Russia,31,20 June 1982,TRUE
+?,DF,Dmitri Kombarov,21,Russia Spartak Moscow,Russia,27,22 January 1987,TRUE
+?,DF,Andrey Yeshchenko,10,Russia Anzhi Makhachkala,Russia,30,9 February 1984,TRUE
+?,DF,Aleksei Kozlov,9,Russia Dynamo Moscow,Russia,27,16 November 1986,TRUE
+?,DF,Vladimir Granat,4,Russia Dynamo Moscow,Russia,27,22 May 1987,TRUE
+?,DF,Georgi Shchennikov,3,Russia CSKA Moscow,Russia,23,27 April 1991,TRUE
+?,DF,Andrei Semyonov,0,Russia Terek Grozny,Russia,25,24 March 1989,TRUE
+?,MF,Yuri Zhirkov,60,Russia Dynamo Moscow,Russia,30,20 August 1983,TRUE
+?,MF,Igor Denisov,42,Russia Dynamo Moscow,Russia,30,17 May 1984,TRUE
+?,MF,Roman Shirokov,41,Russia Krasnodar,Russia,32,6 July 1981,TRUE
+?,MF,Alan Dzagoev,31,Russia CSKA Moscow,Russia,23,17 June 1990,TRUE
+?,MF,Denis Glushakov,25,Russia Spartak Moscow,Russia,27,27 January 1987,TRUE
+?,MF,Viktor Fayzulin,17,Russia Zenit Saint Petersburg,Russia,28,22 April 1986,TRUE
+?,MF,Aleksandr Samedov,15,Russia Lokomotiv Moscow,Russia,29,19 July 1984,TRUE
+?,MF,Oleg Shatov,5,Russia Zenit Saint Petersburg,Russia,23,29 July 1990,TRUE
+?,MF,Aleksei Ionov,4,Russia Dynamo Moscow,Russia,25,18 February 1989,TRUE
+?,MF,Pavel Mogilevets,1,Russia Rubin Kazan,Russia,21,25 January 1993,TRUE
+?,FW,Aleksandr Kerzhakov,79,Russia Zenit Saint Petersburg,Russia,31,27 November 1982,TRUE
+?,FW,Aleksandr Kokorin,20,Russia Dynamo Moscow,Russia,23,19 March 1991,TRUE
+1,GK,Jung Sung-Ryong,60,South Korea Suwon Bluewings,South Korea,29,4 January 1985,TRUE
+2,DF,Kim Chang-Soo,8,Japan Kashiwa Reysol,South Korea,28,12 September 1985,FALSE
+3,DF,Yun Suk-Young,3,England Queens Park Rangers,South Korea,24,13 February 1990,FALSE
+4,DF,Kwak Tae-Hwi,34,Saudi Arabia Al-Hilal,South Korea,32,8 July 1981,FALSE
+5,DF,Kim Young-Gwon,20,China Guangzhou Evergrande,South Korea,24,27 February 1990,FALSE
+6,DF,Hwang Seok-Ho,3,Japan Sanfrecce Hiroshima,South Korea,24,27 June 1989,FALSE
+7,MF,Kim Bo-Kyung,27,Wales Cardiff City,South Korea,24,6 October 1989,FALSE
+8,MF,Ha Dae-Sung,13,China Beijing Guoan,South Korea,29,2 March 1985,FALSE
+9,FW,Son Heung-Min,24,Germany Bayer Leverkusen,South Korea,21,8 July 1992,FALSE
+10,FW,Park Chu-Young,63,England Watford,South Korea,28,10 July 1985,FALSE
+11,FW,Lee Keun-Ho,63,South Korea Sangju Sangmu,South Korea,29,11 April 1985,TRUE
+12,DF,Lee Yong,11,South Korea Ulsan Hyundai,South Korea,27,24 December 1986,TRUE
+13,MF,Koo Ja-Cheol (captain),36,Germany Mainz 05,South Korea,25,27 February 1989,FALSE
+14,MF,Han Kook-Young,9,Japan Kashiwa Reysol,South Korea,24,19 April 1990,FALSE
+15,MF,Park Jong-Woo,10,China Guangzhou R&F,South Korea,25,10 March 1989,FALSE
+16,MF,Ki Sung-Yueng,57,England Sunderland,South Korea,25,24 January 1989,FALSE
+17,MF,Lee Chung-Yong,54,England Bolton Wanderers,South Korea,25,2 July 1988,FALSE
+18,FW,Kim Shin-Wook,26,South Korea Ulsan Hyundai,South Korea,26,14 April 1988,TRUE
+19,FW,Ji Dong-Won,27,Germany FC Augsburg,South Korea,23,28 May 1991,FALSE
+20,DF,Hong Jeong-Ho,24,Germany FC Augsburg,South Korea,24,12 August 1989,FALSE
+21,GK,Kim Seung-Gyu,5,South Korea Ulsan Hyundai,South Korea,23,30 September 1990,TRUE
+22,DF,Kim Jin-Su,10,Japan Albirex Niigata,South Korea,21,13 June 1992,FALSE
+23,GK,Lee Bum-Young,0,South Korea Busan IPark,South Korea,25,2 April 1989,TRUE

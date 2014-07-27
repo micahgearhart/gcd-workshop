@@ -1,0 +1,596 @@
+---
+title: "Session III - Integrating RNA-Seq & Annotation"
+author: "micah gearhart"
+date: "7/16/2014"
+output: html_document
+---
+
+## Integrating RNA-Seq & Annotation 
+On Wednesday morning we will identify differentially expressed genes in a publically available dataset using a generalized linear model approach.  This method easily extends to other quantitative sequencing experiments like ChIP-Seq.  We will use annotation data available at Ensembl and databases such as Wormbase, Flybase and Mouse Genome Informatics (MGI).
+
+## Install Bioconductor Packages 
+This set of packages is ~ 100MB and might take up to ~5 minutes to download and install.
+``` {r Setup, eval=F}
+source("http://bioconductor.org/biocLite.R")
+biocLite("qvalue")
+biocLite("edgeR")
+biocLite("GenomicFeatures")
+biocLite("biomaRt")
+biocLite("BSgenome.Dmelanogaster.UCSC.dm3")
+biocLite("TxDb.Dmelanogaster.UCSC.dm3.ensGene")
+biocLite("MotifDb")
+biocLite("motifStack")
+```
+
+## Load Libraries
+```{r Libraries, echo=F}
+library(qvalue)
+library(edgeR)
+library(GenomicFeatures)
+library(biomaRt)
+library(BSgenome.Dmelanogaster.UCSC.dm3)
+library(TxDb.Dmelanogaster.UCSC.dm3.ensGene)
+library(MotifDb)
+library(motifStack)
+```
+
+
+## Download Today's Rmd File
+Download this file from your Email, directly from the Web, or with R:
+https://raw.githubusercontent.com/micahgearhart/gcd-workshop/master/Session_III.Rmd
+
+```{r Download Rmd,eval=F}
+library(downloader)
+download("https://raw.githubusercontent.com/micahgearhart/gcd-workshop/master/Session_III.Rmd",
+         destfile="Session_III.Rmd")
+```
+
+
+## RNA-SEQ Example
+A standard RNA-Seq workflow involves mapping sequence reads to the genome and determining the number of reads that map to the exons of each gene in the genome.  These first few steps are computational intensive and are better suited to a High Performance Computing resource which can easily be accessed with tools like Galaxy and CLCbio.
+
+For this workshop, someone has done the computationally intensive work for us and posted a table of counts per gene online at http://bowtie-bio.sourceforge.net/recount/.  We are going to download data from a rat spinal nerve ligation experiment that is described in Hammer et al (http://www.ncbi.nlm.nih.gov/pubmed?term=20452967)
+
+## Download the Count Data
+```{r RNA-Seq 1}
+download("http://bowtie-bio.sourceforge.net/recount/countTables/hammer_count_table.txt",destfile="hammer.txt")
+download("https://raw.githubusercontent.com/micahgearhart/gcd-workshop/master/phenodata.csv",destfile="phenodata.csv")
+
+h<-read.table("hammer.txt",row.names=1,header=T)
+head(h)
+nrow(h)
+```
+
+## Experimental Design
+Take a careful look at the phenodata file that comes with this dataset.  There are two timepoints (2 weeks, 2 months) and 2 protocols (control surgery, L5 Spinal Nerve Ligation/SNL).  There are two biological replicates per group for a total of 8 samples.
+```{r RNA-Seq 2}
+(phenodata<-read.csv("phenodata.csv",row.names=1,header=T))
+```
+
+## Filter out genes that are not expressed
+While there is a row in this dataset for each gene in the genome, many of these genes are not expressed in this cell type.  We can count the number of reads for each gene with the function apply() and use indexing to toss out genes that are not significantly expressed.  We'll use a cutoff of at least 100 reads across all samples.
+
+The R function apply() is similar to the function tapply() function we used on Monday.  But instead of grouping data by diet and genotype, the data is grouped by either the row or the column.  The second argument to apply is the integer 1 if you want to group by row and 2 if you want to group by columns.
+
+```{r RNA-Seq 3}
+reads_per_gene <- apply(h,1,sum)
+h<-h[reads_per_gene>100,]
+nrow(h)
+```
+
+## Exploratory Data Analysis - Boxplot
+The first and one of the most important steps is to look at the data to see if there is anything unexpected.  We need to do a log2 tranformation to see how the counts are distributed.  Since the log2(0) is undefined, we will add 0.5 to the count table.  We will know which data points were 0 before the transformation because log2(0.5) is -1.
+```{r RNA-Seq 4}
+hT<-log2(h+0.5)
+boxplot(hT,range=0)
+```
+
+## Exploratory Data Analysis - MA plot
+In addition to the boxplot, it is also helpful to plot one sample versus another sample.  This will tell us if there is anything unusual about one particular sample or if they are all pretty much the same.  Instead of a standard x,y scatterplot we are going to plot the difference between samples (sample 1 "Minus" sample 2) vs the "Average" of two samples (sample 1 plus sample 2 divided by 2).  We'll write a quick function so we can use it over and over again.
+```{r RNA-Seq 5}
+plot.ma <- function(x,y) {
+m<-hT[,x]-hT[,y]
+a<-(hT[,x]+hT[,y])/2
+plot(a,m,pch=19,cex=0.2,xlim=c(0,17),ylim=c(-7,7),main=paste0(x," vs ",y))
+}
+#test the function
+plot.ma(1,2)
+```
+
+##  Exploratory Data Analysis - MA plot
+Since we know from the boxplot above that samples 1-4 have a different read depth than samples 5-8 we will just compare within each group.  The for() function is how we write a loop in R.  By putting a loop inside a loop we can look at all the combinations.
+```{r RNA-Seq 6}
+#This command breaks up our plot window into a 2x2 grid
+par(mfrow=c(2,2))
+
+#two month data
+for (x in 1:2) {for (y in 3:4) {plot.ma(x,y)}}
+```
+
+```{r RNA-Seq 7}
+#two week data
+for (x in 5:6) {for (y in 7:8) {plot.ma(x,y)}}
+```
+
+## EdgeR
+We are going to use a Bioconductor package called EdgeR.  It is a "count-based" method which means that it does the statistical analysis based on the number of observations (counts) rather than the "expression levels" of each gene (counts per kb of coding sequence, ~FPKM).  This tutorial follows a Nature Protocols paper published in 2013:  http://www.ncbi.nlm.nih.gov/pubmed/23975260.
+
+First we create group names for the samples so that biological replicates will have the same name.  We will use the phenodata to create the names.  Then we will create a Differential Gene Expression List with the function DGEList().
+```{r RNA-Seq 8}
+(group_names <- paste0(phenodata$protocol,";",phenodata$time))
+
+d<-DGEList(counts=h,group=group_names)
+```
+
+## Normalization
+The first step is to normalize the expression across all the samples.  To prevent the normalization from being heavily weighted by the highest expressing genes, this normalization step takes into account the library size and a separate normalization factor.  See ?calcNormFactors for a description of the four different options for normalization.
+```{r RNA-Seq 9}
+d <- calcNormFactors(d)
+d$samples
+```
+
+## Counts Per Million
+We can extract the normalized counts with the function cpm().  We will use the log option and compare to the log2 transformed raw counts.
+```{r RNA-Seq 10}
+logCpm <- cpm(d,log=T)
+head(logCpm)
+par(mfrow=c(1,2)) # make a 1x2 plot 
+boxplot(hT,range=0,main="Raw Counts")
+boxplot(logCpm,range=0,main="Normalized Counts")
+```
+
+## Multi-Dimensional Scaling
+A common method to look at the variation between samples is to reduce the dimensions of our data table down to 2 that can be plotted on the x and y axis of a scatter plot.  This helps us understand how the samples are related to each other in an abstract, but graphical way.
+```{r RNA-Seq 11}
+par(mfrow=c(1,1))
+plotMDS(d,labels=1:8, col=c("red","purple","darkgreen","blue")[factor(group_names)],)
+```
+
+## Estimating Biological Variation
+Variation, also known as dispersion in statistics, is present in every measurement we make.  There are many sources of dispersion including random noise and biological variation.  Different genes have different levels of biological variation.  We can use our biological replicates to measure the dispersion for each gene (aka "Tag") and compare it what we would get if we assumed all genes had the same dispersion.  The plotBCV() function shows the biological coefficent of variation as a function of expression level.
+```{r RNA-Seq 12}
+d <- estimateCommonDisp(d)
+d <- estimateTagwiseDisp(d)
+par(mfrow=c(1,1))
+plotBCV(d,main="Tagwise vs Common Dispersion")
+```
+
+## exactTest for Pairwise Testing
+Now that we have the samples normalized and calculated the biological variation from the data, we can do a statistical test between any pair of the groups.  Since the 2 week data had more samples, lets do a test between " control; 2 weeks" and " L5 SNL; 2 weeks". The function exactTest() does a statistal test on the two groups. The function topTags() puts that data in a table.
+```{r RNA-Seq 13}
+eT_2weeks <- exactTest(d,pair=c(" control; 2 weeks"," L5 SNL; 2 weeks"))
+tT_2weeks <-topTags(eT_2weeks,n=Inf,adjust.method="BH")$table  #setting n to Inf gives me all genes
+
+#subset the table to get genes with logFC of 2 and a 5% false discovery rate
+tT_2weeks<-tT_2weeks[abs(tT_2weeks$logFC)>2 & tT_2weeks$FDR < 0.05,]
+nrow(tT_2weeks)
+```
+
+## GLM / Multivariate Analysis
+The exactTest is only able to compare two groups.  We could do another exactTest with the 2 month old data or combine all the data into a multifactor analysis like we did with the Pupation_Rate data on Monday.  This would essentially be an ANOVA analysis where the variance is attributed to all the experimental factors.  In the experiment the two factors are protocol (control surgery or L5 SNL) and time (2 week vs 2 month).  
+
+We will use the phenodata and the model.matrix() function to create a "design" for analysis that shows which samples are affected by which factors.  A 0 in the design table means the sample is not affected by that factor and a 1 means that sample is affected by that factor.  Take a few minutes looking at the phenodata table and the design matrix.
+```{r RNA-Seq 14}
+phenodata
+#(design <- model.matrix(~0 + phenodata$protocol + phenodata$time))
+(design <- model.matrix(~ phenodata$protocol + phenodata$time))
+```
+*The Nature Protocols paper referenced above uses a multivariate analysis and implements a second factor to pull out a batch effect due to a difference in the sequencing method for a second seq of samples.
+
+## Re-estimate the Dispersion based on the "design"
+Since we have framed the experiment a different way, the dispersion we see in the data can be re-distributed across the two factors and the underlying biological variation.  The method to distribute the dispersion in this step is one of main difference between the many GLM-based RNA-Seq software packages that are available (DESeq2, Limma-Voom, etc.)  We can plot the plot the Biological coefficient of Variation again and compare it to what we got before we added the multifactor "design".
+```{r RNA-Seq 15}
+d2 <- d # make a copy of d
+d2 <- estimateGLMTrendedDisp(d2,design)
+d2 <- estimateGLMTagwiseDisp(d2, design)
+plotBCV(d2,main="Multivariate GLM")
+```
+
+## Fit the Model and Test
+Now we can fit our data to the model using glmFit().  This is genaralized version of the lm() function we used to fit the Bradford assay data on Monday.  Then we can use a likelihood ratio test based on the second factor of the "design" which was protocol.  This will give us genes that were differentially expressed due to this factor.
+```{r RNA-Seq 16}
+d2_fit <- glmFit(d2, design)
+lrt.protocol = glmLRT(d2_fit, coef=2)
+tT_protocol <-topTags(lrt.protocol,n=Inf,adjust.method="BH")$table
+#subset changes as before 
+tT_protocol<-tT_protocol[abs(tT_protocol$logFC)>2 & tT_protocol$FDR < 0.05,]
+nrow(tT_protocol)
+```
+
+## Plot the Result
+Here are two popular plot styles for looking at the results of differential gene expression studies.  We will create a logical vector "de" with the %in% operator and use it color code the points depending on whether they were differentially expressed.
+```{r RNA-Seq 17}
+de<-rownames(d2) %in% rownames(tT_protocol)
+
+plot(lrt.protocol$table$logCPM, lrt.protocol$table$logFC, cex = 0.2, pch = 19, 
+    col = ifelse(de, "red", "black"), 
+    main = "Smear Plot",xlim=c(0,15),ylim=c(-7,7))
+abline(h = c(-2, 2), col = "blue")
+```
+
+```{r RNA-Seq 18}
+plot(lrt.protocol$table$logFC, -1 * log10(lrt.protocol$table$PValue), cex = 0.2, pch = 19, 
+    col = ifelse(de, "red", "black"), 
+    main = "Volcano Plot",ylim=c(0,150),xlim=c(-7,7))
+abline(v = c(-2, 2), col = "blue")
+```
+
+## EXERCISE 1
+
+Which genes are in tT_protocol that are not %in% tT_2weeks?  
+ Hint:  It is more than 5.
+ 
+Subset the logCpm table we made earlier to see what the normalized counts are for these genes.
+Hint: ?match
+
+Check out ?heatmap and make a heatmap from the logCpm values from these genes.
+Hint:  heatmap(your.answer.from.the.previous.question,Colv=NA)
+
+
+## Biomart
+We now have a list of rat genes that are differentially expressed as a result of L5 Spinal Nerve Ligation.  The next step is to learn more about these genes and design experiments to determine how these genes contribute to the observed phenotypes.
+
+Yesterday, we used the Org.Hs.eg.db to look up human gene symols and retrieve data associated with those genes just as OMIM and GO terms.  Today we will use a different resource called biomaRt.  Biomart is very useful because it works as a clearing house for lots of other resources on the web like MGI, Wormbase and Flybase. 
+
+Like the keys, keytypes, and columns we used with Org.Hs.eg.db, the nomenclature can be kind of tricky but the underlying concepts are similar.  The biomaRt vignette is a good place to start if you would like to explore biomaRt resources on your own.
+
+http://bioconductor.org/packages/release/bioc/vignettes/biomaRt/inst/doc/biomaRt.pdf
+
+## Also note that Biomart can sometimes be down.
+
+## ListMarts
+Since there is so much data at biomaRt it can sometimes be hard to find what your are looking for.  The different databbases are organized into marts.  listMarts() will show you the different marts.  
+```{r Annotation 1}
+listMarts()
+```
+
+We need to specify what mart we are interested in with the useMart() function and then we can expore what datasets are available in that Mart with the listDatasets() function.  This will be a big list so we will wrap it in View().
+```{r Annotation 2}
+ensembl <- useMart(biomart="ensembl")
+View(listDatasets(ensembl))
+```
+
+We are going to use three different datasets so I will specify them as rat, fly and human.
+```{r Annotation 3}
+rat <- useMart(biomart="ensembl", dataset="rnorvegicus_gene_ensembl")
+fly <- useMart(biomart="ensembl", dataset="dmelanogaster_gene_ensembl")
+human <- useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl")
+```
+
+## List of Human Genes
+We'd first like to get the human genes from our list of rat genes.  To do this we need to pry even deeper into the biomaRt database.  We'll find out what pieces of information are available in rat dataset with the listAttributes() function.  Since there is long list of attributes, we can use the grep function to search for "human_homolog" in the attributes of the rat dataset.
+
+```{r Annotation 4}
+attributes <- listAttributes(rat)
+attributes[grep("hsapiens_homolog",attributes[,1]),]
+```
+
+Now we can use the getBM() function to retrieve the "hsapiens_homolog_ensembl_gene" for every rat_gene in tT_protocol.    This function is very similar to the select() function we used yesterday.  The filters= argument is equivalent to the keytypes argument, the values= is equivalent to keys, the attributes= is equivalent to columns and mart just specifies which dataset we are querying.
+
+```{r Annotation 5}
+human_genes<-getBM(filters="ensembl_gene_id", values=rownames(tT_protocol), mart=rat,
+                attributes="hsapiens_homolog_ensembl_gene")
+```
+
+## Human Symbols & OMIM Terms
+Now that we have a list of human genes, we can expore the human dataset.  First search for attributes we are interested in.
+```{r Annotation 6}
+attributes <- listAttributes(human)
+attributes[grep("symbol",attributes[,1]),]
+attributes[grep("mim",attributes[,1]),]
+```
+
+## Human Symbols & OMIM Terms
+Here we retreive the "hgnc_symbol" and "mim_morbid_description" for our human genes. This information helps build an understanding of what these genes do.
+```{r Annotation 7}
+human_anno <-getBM(filters="ensembl_gene_id", values=human_genes, mart=human,
+                attributes=c("ensembl_gene_id","hgnc_symbol","mim_morbid_description"))
+View(human_anno)
+```
+
+## Rat to Fly
+Let's suppose we'd like to follow up this study with studies in a model organism just as Drosophila melanogaster.  To learn about the fly equivalent of the rat genes we can also use biomaRt to generate a list of fly homologs.
+```{r Annotation 8}
+fly_genes<-getBM(filters="ensembl_gene_id", values=rownames(tT_protocol), mart=rat,
+                attributes="dmelanogaster_homolog_ensembl_gene")
+nrow(fly_genes)
+```
+
+## Retreive Flybase Data from the dmel Mart
+If we want more than just the fly gene name, we can query the fly dataset like we did for the human dataset.
+```{r Annotation 9}
+attributes <- listAttributes(fly)
+View(attributes)
+attributes[grep("flybase",attributes[,1]),]
+fly_anno <-getBM(filters="ensembl_gene_id", values=fly_genes, mart=fly,
+                attributes=c("ensembl_gene_id","flybasecgid_gene",
+                             "flybase_annotation_id","flybasename_gene"))
+```
+
+## Dmelanogaster Txdb to get Gene Positions
+Now that we have a list of fly genes, we can begin to learn more about those genes.  To find out where those genes are in the genome we can use TxDb.Dmelanogaster.UCSC.dm3.ensGene.  This is the fly equivalent of the human transcript database that we used yesterday.  We can use the genes() function again to create a GRanges object for every gene in the fly genome.
+```{r Annotation 10}
+txdb <- TxDb.Dmelanogaster.UCSC.dm3.ensGene
+seqlevelsStyle(txdb) #Always check!!
+genes<-genes(txdb,columns="gene_id")
+```
+
+## Biostrings
+One of the other packages we downloaded from Bioconductor is BSgenome.Dmelanogaster.UCSC.dm3.  This package contains the nucleotide sequence for the entire dm3 genome stored in an efficient BioStrings format.  We can extract those sequences from the promoters of the genes on our list with the getPromoterSeq() function in the BioStrings package.  
+
+It is similar to the promoters() function we used yesterday but it instead of returning a GRanges object it is returning the nucleotide sequence as a DNAStringSet object.
+
+```{r Annotation 11}
+myDNA<-getPromoterSeq(genes[fly_genes[,1]], Dmelanogaster, upstream = 2500,  downstream = 500)
+class(myDNA)
+head(myDNA)
+```
+
+## MotifDb and matchPWM
+We would like to know if the transcription factor Err is present in the promoters of any of these genes.  We can search the MotifDB for "FBgn0035849", the fly name for this gene.  We can plot the motif with seqLogo().
+```{r Annotation 12}
+library(seqLogo)
+(pfm.err<-unlist(query(MotifDb, "FBgn0035849")))
+seqLogo(pfm.err)
+```
+
+To search the promoter sequences we will first convert the position frequency matrix to a position weight matrix. 
+```{r Annotation 13}
+(pwm.err <- round(100*pfm.err))
+
+#this will searh the first promoter
+matchPWM(pwm.err, myDNA[[1]], "85%")
+```
+
+Since matchPWM can't search more that one piece of DNA at a time we will have to use a for loop.  This function could take a minute to run.
+```{r Annotation 14}
+temp<-integer()
+#loop through myDNA
+for (i in 1:length(myDNA)) {
+temp[i]<-length(matchPWM(pwm.err, myDNA[[i]], "85%"))  
+}
+mcols(myDNA)$err_binding_sites<-temp
+head(mcols(myDNA))
+```
+
+## EXERCISE 2 - PDB Database
+Use biomaRt to find PDB codes associated with the fly_genes.  How many of the fly_genes encode proteins with known structures?
+
+## Multiple Testing Corrections
+First, read this comic:  http://xkcd.com/882/
+
+A p-value of 0.05 means that you have a 1 in 20 chance at arriving at that result by chance.  But it also means that 5% of all tests will be less have a p-value less than 0.05 under the null hypothesis.
+
+In the above RNA-Seq we did significance testing on ~13,000 genes.  This section is about how and and why we adjust p-values. This was done automatically for us by the EdgeR package, but let's use R to do a simple t.test and calculate a p-value.
+
+## R is Built for Statistics
+First let's learn how to do a single test in R.  Assume we have 10 measurements from a control group and 10 measurements from a treated group.   We can enter the data maually and create a boxplot.
+
+```{r Multiple Testing 1 }
+x<-c(8.1,7.9,6.4,5.8,10.5,11.0,9.0,11.2,14,11.7)
+y<-c(12.1,8.9,15.6,14.1,13.2,12.5,14.3,9.1,17.2)
+boxplot(x,y)
+```
+
+## t.test
+Now perfrom a t.test with the two groups.  Notice the value t returned by t.test is a list of 9 different items.  Try ?t.test to learn more about input options and output values.
+``` {r Multiple Testing 2}
+(t<-t.test(x,y))
+
+#use the $ operator to pull out the p.value
+t$p.value
+```
+
+## Scale it up to 1000 tests 
+Like the jellybeans above, doing lots of tests will give us a p-value of less than 0.05 approximately 5% of the time.  We can simulate this effect by randomly generating data in R.
+
+Imagine we are measuring gene expression in an organism that only has 1000 genes.  This hypothetical organism also expresses each gene at the same level, 8 units.  
+
+```{r Multiple Testing 3} 
+true_expression <- matrix(8,nrow=1000,ncol=10)  #1000 genes, 10 replicates
+head(true_expression)
+```
+
+## Randomly generate noise with rnorm()
+We can use the R function rnorm to create some "noise" or variation in our data so that looks like real data.
+```{r Multiple Testing 4}
+#rnorm returns normally distributed random numbers
+#this will return 10 numbers with a mean of 0 and a standard deviation of 1
+x<-rnorm(10,mean=0,sd=1)
+x
+mean(x)
+sd(x)
+```
+
+## Create a matrix of noise
+```{r Multiple Testing 5}
+noise1<-matrix(rnorm(10000,mean=0,sd=1),nrow=1000,ncol=10)
+noise2<-matrix(rnorm(10000,mean=0,sd=1),nrow=1000,ncol=10)
+head(noise1)
+head(noise2)
+# Notice noise1 is different from noise2.
+```
+
+## Add a matrix of noise to our gene expression matrix
+```{r Multiple Testing 6}
+#Now add noise to the data
+control <- true_expression + noise1 
+mock_treated <- true_expression + noise2
+```
+
+## Fancy it up a bit to make it look like a gene expression dataset
+```{r Multiple Testing 7}
+#Make it look like an expresion list
+rownames(control)<- paste0("Gene",1:M)
+rownames(mock_treated)<- paste0("Gene",1:M)
+colnames(control)<- paste0("C",1:N)
+colnames(mock_treated)<- paste0("T",1:N)
+
+#combine it into one giant expression list with cbind
+sim.data<-cbind(control,mock_treated)
+head(sim.data)
+```
+
+## Null Hypothesis is True
+The noise we added to the control had the same level of noise we added to the mock_treated.  Statistically speaking, the null hypothesis is true because there is no significant difference between the control and treated.
+```{r Multiple Testing 8}
+boxplot(sim.data)
+```
+
+## Calculate Pvalues On Simulated Data
+```{r Multiple Testing 9}
+#pvalue for first gene1
+t.test(sim.data[1,1:10],sim.data[1,11:20])$p.value
+```
+But how do we do this for every gene in our table?
+
+## Apply
+We'd like to use the function apply() to do a t.test across each row but it can be a little tricky to implement.  Lets first use the sum() function like we did above to add up the expression values across the rows.
+```{r Multiple Testing 10}
+sim.data.sums <- apply(sim.data,1,sum)
+
+# 20 columns * ~ 8 units of gene expression per column = ~160 units of expression for each gene
+head(sim.data.sums)
+```
+
+## Custom Function to use with Apply
+Instead of passing all 20 values to t.test we need to separate the first 10 and second 10 values.  Then we can use a t.test on the first and second groups.  We can write a custom function to accomplish this.
+```{r Multiple Testing 11}
+myfun <- function(x) {
+first<-x[1:10]
+second<-x[11:20]
+return(t.test(first,second)$p.value)
+}
+
+# test the function using the x and y variables above
+t.test(x,y)$p.value
+myfun(c(x,y))
+```
+
+## Now "apply" myfun() to the entire matrix
+```{r Multiple Testing 12}
+p<-apply(sim.data, 1, myfun)
+head(p)
+```
+
+## Plot the distribution of the P-Values 
+```{r Multiple Testing 13}
+hist(p,main="P-values when all Nulls are true",xlim=c(0,1),nclass=20)
+```
+
+## How many are less the 0.05?
+```{r Multiple Testing 14}
+sum(p<0.05)
+```
+
+## Benjamini-Hochberg
+Just like the jellybeans, there should be a about 50 tests with a significant p-value.  If we apply a Benjamini-Hochberg correction our number of postive tests should go to zero or close to zero. 
+```{r Multiple Testing 15}
+#now adjust
+p.BH=p.adjust(p,method="BH")
+hist(p.BH,main="P-values when all Nulls are true",xlim=c(0,1),nclass=20)
+```
+
+## Benjamini-Hochberg
+```{r Multiple Testing 16}
+#number of significant pvalues should go to zero or close to zero
+min(p.BH)
+sum(p.BH<0.05)
+```
+
+## Add an effect
+Now let's see what happens when we have real fold changes in our treatment.  Let's assume 1% of the genes go up by 3 standard deviations.  Since we set the standard deviation of the noise to be 1, we'll add 3 to the first 10 genes.
+```{r Multiple Testing 17}
+#copy the mock_treated sample so we keep the same noise
+treated <- mock_treated
+
+#this only affects the first 10 rows
+treated[1:10,]<-treated[1:10,]+3
+sim.data_with_effect <-cbind(control,treated)
+head(sim.data_with_effect,n=20)
+```
+
+## Boxplot
+Since all the genes are expressed at 8, the treated genes are outliers
+```{r Multiple Testing 18}
+boxplot(sim.data_with_effect)
+```
+
+## Null Hypothesis is not true for Genes 1:10
+```{r Multiple Testing 19}
+p2<-apply(sim.data_with_effect, 1, myfun)
+head(p2)
+hist(p2,main="P-values with 10 DE genes",xlim=c(0,1),nclass=20)
+sum(p2<0.05)
+```
+
+## How Does Benjamini-Hochberg Correction work?
+All the pvalues are sorted from smallest to largest then we create a cutoff depending on the number of tests we have done.
+```{r Multiple Testing 20}
+plot(1:1000,sort(p2),pch=19,cex=0.5)
+
+## this line has an intercept 0 and a slope of "alpha" / "number of tests" 0.05/1000 in this case.
+abline(a=0,b=0.05/1000)
+```
+
+## Zoom in on the very small p-values
+```{r Multiple Testing 21}
+plot(1:1000,sort(p2),xlim=c(0,15),ylim=c(0,0.01),pch=19,cex=0.5)
+## this line has an intercept 0 and a slope of "alpha" / "number of tests" 0.05/1000 in this case.
+abline(a=0,b=0.05/1000)
+```
+
+## Use Benjamini-Hochberg see what is below the line 
+```{r Multiple Testing 22}
+p2.BH=p.adjust(p2,method="BH")
+hist(p2.BH,main="P-values with 10 DE genes",xlim=c(0,1),nclass=20)
+min(p2.BH)
+sum(p2.BH<0.05)
+p2.BH[p2.BH<0.05]
+```
+We were able to find ~10 genes.   
+
+## What are qvalues?
+A qvalue for a gene is the False Discover Rate (FDR) at which that gene would have been called significant.
+```{r Multiple Testing 23}
+library(qvalue)
+#calculate qvalues for tests when null is true 
+q=qvalue(p)
+pi0=q$pi0
+hist(q$q,xlim=c(0,1), main="Q-Values when Nulls are True")
+pi0
+min(q$q)
+
+#calculate qvalues when we have differentially expressed genes.
+q2=qvalue(p2)
+head(q2$q,n=20)
+pi02=q2$pi0
+hist(q2$q,xlim=c(0,1), main="Q-Values with 10 DE genes")
+pi02
+min(q2$q)
+```
+
+## EXCERCISE 3 - Change the Parameters of the simulation to look for bigger or smaller effects. 
+See what happens when the treatment upregulates 20% of the genes instead of 1%.
+See what happens when the effect of the treatment get bigger / smaller relative to the Noise (8x SDs?, 1.5x SDs?)
+
+## YOU'RE DONE
+Feel free to track me down and ask me questions about this section or any of the other sections.  Thanks for coming and please remember to fill out the survey.
+
+## Acknowledgements / References
+Recent Reviews of RNA-Seq Methods
+http://www.ncbi.nlm.nih.gov/pubmed/24020486
+http://www.ncbi.nlm.nih.gov/pubmed/23497356
+
+Hammer et al. 
+http://www.ncbi.nlm.nih.gov/pubmed?term=20452967
+
+Nature Protocols paper on RNA-Seq and Bioconductor. Box2 of this paper has a nice discussion of the differences between DESeq and EdgeR.
+http://www.ncbi.nlm.nih.gov/pubmed/23975260
+
+Jeff Leek for sharing thoughts on Multiple Testing and the xkcd comic.
+http://simplystatistics.org/2014/05/22/10-things-statistics-taught-us-about-big-data-analysis/
+
+Naomi Altman for Multiple Testing Example
+http://www.personal.psu.edu/nsa1/talks/MultipleComparisons.pdf
+
